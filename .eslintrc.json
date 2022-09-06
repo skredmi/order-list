@@ -15,7 +15,7 @@
   "overrides": [],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": "latest",
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
