@@ -1,0 +1,37 @@
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.primary {
+  fill: var(--main-background-color);
+  stroke: var(--main-background-color);
+}
+
+.transparent {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+}
+
+.black {
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+}
+
+.delete {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+}
+
+.locked {
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.search {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+}

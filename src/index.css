@@ -1,0 +1,17 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+:root {
+  --main-color: #459df5;
+  --secondary-color: #bad8f5;
+  --main-text-color: #000000;
+  --main-background-color: #ffffff;
+  --incorrect-state-border-color: #f53152;
+  --border-section-color: #8055ff;
+  --dropdown-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  padding: 1rem;
+  font-family: "Ubuntu", Arial, sans-serif;
+}
