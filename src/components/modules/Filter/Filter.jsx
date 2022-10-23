@@ -6,7 +6,7 @@ import { FilterDateContainer } from "../FilterDateContainer/FilterDateContainer"
 import { FilterStatusContainer } from "../FilterStatusContainer/FilterStatusContainer";
 
 export const Filter = ({
-      inputSearchValue,
+            inputSearchValue,
   onChangeInputSeacrhValue,
   onClearInputValue,
   onOpenFiltersContainer,
