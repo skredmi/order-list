@@ -4,8 +4,8 @@
 }
 
 .primary {
-  fill: var(--main-background-color);
-  stroke: var(--main-background-color);
+  fill: var(--main-background-color-light, var(--main-background-color-dark));
+  stroke: var(--main-background-color-light, var(--main-background-color-dark));
 }
 
 .transparent {
@@ -13,7 +13,7 @@
   stroke: var(--main-color);
 }
 
-.black {
+.dark {
   fill: var(--main-text-color);
   stroke: var(--main-text-color);
 }

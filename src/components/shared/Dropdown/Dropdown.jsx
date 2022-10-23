@@ -14,14 +14,12 @@ export const Dropdown = ({
   title,
   children,
   className,
-  isOpen,
   ...props
 }) => {
   const blockClass = classnames(styles.container, {
     [styles.button]: dropdownStyle === DropdownTypes.button,
     [styles.dropdown_inputSize]: dropdownStyle === DropdownTypes.input,
-    [styles.dropdown_hidden]: !isOpen,
-    [className]: !!className
+    [className]: className
   });
   return (
     <div className={blockClass} {...props}>
@@ -29,14 +27,10 @@ export const Dropdown = ({
       {dropdownStyle === DropdownTypes.button && children}
       {dropdownStyle === DropdownTypes.input && children}
       {dropdownStyle === DropdownTypes.list && (
-        <div>
-          {children.map((item, index) => (
-            <div className={styles.dropdown} key={item[index]}>
-              {item}
-            </div>
-          ))}
+        <div className={styles.dropdown}>
+          {children}
         </div>
       )}
-    </div>
+    </div> 
   );
 };

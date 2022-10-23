@@ -4,7 +4,7 @@
 import classnames from "classnames";
 import styles from "./Checkbox.module.css";
 import { Icon } from "../Icon/Icon";
-import { DropdownTypes } from "../Dropdown/Dropdown";
+import { DropdownTypes } from "../Dropdown/Dropdown"
 
 export const Checkbox = ({
   className,

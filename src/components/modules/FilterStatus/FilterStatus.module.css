@@ -1,0 +1,11 @@
+.content {
+    width: 12rem;
+    position: relative;
+}
+
+.item {
+    position: absolute;
+    top: 3.75rem;
+    left: 2rem;
+    z-index: 1;
+}

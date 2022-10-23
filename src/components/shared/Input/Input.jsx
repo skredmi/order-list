@@ -7,9 +7,11 @@ import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
 
 const InputTypes = {
+  primary: "primary",
   incorrect: "incorrect",
   search: "search",
-  dropdown: "dropdown"
+  dropdown: "dropdown",
+  filter: "filter"
 };
 
 export const Input = ({
@@ -17,20 +19,22 @@ export const Input = ({
   className,
   placeholder,
   disabled,
-  inputStyle,
   value,
   onChange,
   onClick,
+  prefix,
+  inputStyle = "primary",
   ...props
 }) => {
   const blockClass = classnames(
-    styles.input__field,
+    styles.inputField,
     styles[":focus"],
     styles["::placeholder"],
     {
       [styles.incorrect]: inputStyle === InputTypes.incorrect,
       [styles.search]: inputStyle === InputTypes.search,
-      [styles.input__fieldDropdown]: inputStyle === InputTypes.dropdown,
+      [styles.inputFieldDropdown]: inputStyle === InputTypes.dropdown,
+      [styles.inputPrefix]: prefix,
       [styles.disabled]: disabled,
       [className]: !!className
     }
@@ -39,45 +43,60 @@ export const Input = ({
   return (
     <div
       className={
-        inputStyle === InputTypes.dropdown
-          ? styles.input_dropdown
-          : styles.input
+        inputStyle === InputTypes.dropdown ? styles.inputDropdown : styles.input
       }
       {...props}
     >
       <label className={styles.title}>
         {label}
+        {prefix && <div className={styles.prefix}>{prefix}</div>}
         <input
           className={blockClass}
           placeholder={placeholder}
           value={value}
           disabled={disabled}
           onChange={onChange}
-        />
+          />
         {disabled && <Icon nameIcon="locked" theme="locked" />}
+        {inputStyle === InputTypes.primary && value && (
+          <Button
+            className={styles.button}
+            theme="delete"
+            onClick={onClick}
+            nameIcon="x-medium"
+          />
+        )}
+        {inputStyle === InputTypes.filter && (
+          <Button
+            className={styles.button}
+            theme="delete"
+            onClick={onClick}
+            nameIcon="v-arrow"
+          />
+        )}
         {inputStyle === InputTypes.incorrect && (
           <Button
             className={styles.button}
             nameIcon="x-medium"
             theme="delete"
             onClick={onClick}
-          />
-        )}
+            />
+            )}
         {inputStyle === InputTypes.search && (
           <>
             <Button
-              className={`${styles.button} ${styles.button_search}`}
+              className={`${styles.button} ${styles.buttonSearch}`}
               nameIcon="search"
               theme="search"
             />
             {value && (
               <Button
-                className={styles.button}
-                nameIcon="x-medium"
+              className={styles.button}
+              nameIcon="x-medium"
                 theme="delete"
                 onClick={onClick}
-              />
-            )}
+                />
+                )}
           </>
         )}
       </label>

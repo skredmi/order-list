@@ -15,9 +15,13 @@
   box-sizing: border-box;
 }
 
+.button:hover {
+  opacity: 0.8;
+}
+
 .color_primary {
   background-color: var(--main-color);
-  color: var(--main-background-color);
+  color: var( --main-background-color-light, var(--main-background-color-dark));
   outline-color: var(--secondary-color);
 }
 
@@ -27,7 +31,7 @@
   outline-color: var(--secondary-color);
 }
 
-.color_black {
+.color_dark {
   background-color: transparent;
   color: var(--main-text-color);
   outline-color: var(--secondary-color);
