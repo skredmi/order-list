@@ -1,0 +1,12 @@
+.content {
+  width: 18rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.iconDelete {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+}

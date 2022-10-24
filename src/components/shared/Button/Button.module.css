@@ -19,19 +19,19 @@
   opacity: 0.8;
 }
 
-.color_primary {
+.colorPrimary {
   background-color: var(--main-color);
-  color: var( --main-background-color-light, var(--main-background-color-dark));
+  color: var(--main-background-color-light, var(--main-background-color-dark));
   outline-color: var(--secondary-color);
 }
 
-.color_transparent {
+.colorTransparent {
   background-color: transparent;
   color: var(--main-color);
   outline-color: var(--secondary-color);
 }
 
-.color_dark {
+.colorDark {
   background-color: transparent;
   color: var(--main-text-color);
   outline-color: var(--secondary-color);
@@ -46,7 +46,7 @@
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
-.smallIconOnly {
+.sizeSmall.iconOnly {
   padding: 0.25rem;
 }
 

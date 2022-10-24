@@ -1,14 +1,15 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-props-no-spreading */
-
 import classnames from "classnames";
 import styles from "./Button.module.css";
 import { Icon } from "../Icon/Icon";
 
-const ButtonTypes = {
+const ButtonThemeTypes = {
   primary: "primary",
   transparent: "transparent",
-  dark: "dark"
+  dark: "dark",
+};
+
+const ButtonSizeTypes = {
+  small: "small",
 };
 
 export const Button = ({
@@ -16,25 +17,24 @@ export const Button = ({
   nameIcon,
   type = "button",
   theme,
-  fullWidth,
-  smallSize,
+  isFullWidth,
+  size,
   className,
   onClick,
   ...props
 }) => {
-  const blockClass = classnames(styles.button, {
-    [styles.color_primary]: theme === ButtonTypes.primary,
-    [styles.color_transparent]: theme === ButtonTypes.transparent,
-    [styles.color_dark]: theme === ButtonTypes.dark,
-    [styles.iconOnly]: !children,
-    [styles.fullWidth]: fullWidth,
-    [styles.sizeSmall]: smallSize,
-    [styles.smallIconOnly]: smallSize && !children,
-    [className]: !!className
+  const blockClass = classnames(styles.button, className, {
+    [styles.colorPrimary]: theme === ButtonThemeTypes.primary,
+    [styles.colorTransparent]: theme === ButtonThemeTypes.transparent,
+    [styles.colorDark]: theme === ButtonThemeTypes.dark,
+    [styles.iconOnly]: !children && nameIcon,
+    [styles.fullWidth]: isFullWidth,
+    [styles.sizeSmall]: size === ButtonSizeTypes.small,
   });
   return (
-    <button className={blockClass} type={type} {...props} onClick={onClick}>
-      <Icon nameIcon={nameIcon} theme={theme} {...props} />
+    // eslint-disable-next-line react/button-has-type, react/jsx-props-no-spreading
+    <button className={blockClass} type={type} onClick={onClick} {...props}>
+      <Icon nameIcon={nameIcon} className={className} />
       {children}
     </button>
   );

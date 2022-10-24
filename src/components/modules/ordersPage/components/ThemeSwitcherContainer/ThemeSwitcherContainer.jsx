@@ -14,17 +14,13 @@ export const ThemeSwitcherContainer = ({ className }) => {
     setIsOpenThemeSwitcher(false);
   };
 
-  const buttonText = theme === "light" ? "Светлая тема" : "Темная тема";
-  const nameIcon = theme === "light" ? "sun" : "moon";
-
   return (
     <ThemeSwitcher
       className={className}
       isOpen={isOpenThemeSwitcher}
       onHandleThemeSwitcherOpen={handleThemeSwitcherClick}
       onHandleSwithThemeClick={handleSwitchTheme}
-      buttonText={buttonText}
-      nameIcon={nameIcon}
+      theme={theme}
     />
   );
 };

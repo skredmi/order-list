@@ -3,17 +3,7 @@
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1rem;
-}
-
-.inputDropdown {
-  width: 100%;
-}
-
-.title {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .inputField {
@@ -24,19 +14,18 @@
   box-sizing: border-box;
   border: 0.0625rem solid var(--main-color);
   border-radius: 0.25rem;
-  background-color: var(--main-background-color-light, var(--main-background-color-dark));
+  background-color: var(
+    --main-background-color-light,
+    var(--main-background-color-dark)
+  );
   color: var(--main-text-color-light, var(--main-text-color-dark));
 }
 
-.inputFieldDropdown {
-  padding: 0.5rem 0.25rem 0.5rem 0.5rem;
-}
-
-:focus {
+.inputField:focus {
   outline-color: var(--main-color-light, var(--main-background-color-dark));
 }
 
-::placeholder {
+.inputField::placeholder {
   color: var(--secondary-text-color-light, var(--secondary-text-color-dark));
 }
 
@@ -49,36 +38,19 @@
   color: var(--main-text-color);
 }
 
-.search {
-  padding: 0.5rem 2.25rem 0.5rem 2rem;
-}
-
-.button {
-  width: 1rem;
-  height: 1rem;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  outline: none;
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-}
-
-.buttonSearch {
-  bottom: 0.5rem;
-  left: 0.5rem;
-}
-
 .prefix {
   position: absolute;
+  box-sizing: border-box;
   bottom: 0.5rem;
   left: 0.5rem;
 }
 
 .inputPrefix {
   padding-left: 1.5rem;
+}
+
+.postfix {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

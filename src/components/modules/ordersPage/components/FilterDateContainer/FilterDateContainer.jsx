@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FilterDate } from "../FilterDate/FilterDate";
 
-export const FilterDateContainer = ({ className }) => {
+export const FilterDateContainer = () => {
   const [inputStartDateValue, setInputStartDateValue] = useState("");
   const [inputEndDateValue, setInputEndDateValue] = useState("");
 
@@ -22,7 +22,6 @@ export const FilterDateContainer = ({ className }) => {
 
   return (
     <FilterDate
-      className={className}
       inputStartDateValue={inputStartDateValue}
       inputEndDateValue={inputEndDateValue}
       onChangeInputStartDateValue={handleChangehValueStartDateInput}

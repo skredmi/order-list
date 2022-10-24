@@ -1,0 +1,50 @@
+.filter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+}
+.dropdown {
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  background-color: var(--secondary-color-light, var(--secondary-color-dark));
+  border-radius: 8px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.iconPrimary {
+  fill: var(--main-background-color-light, var(--main-background-color-dark));
+  stroke: var(--main-background-color-light, var(--main-background-color-dark));
+}
+
+.iconTransparent {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+}
+
+.iconSearch {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+}
+
+.iconDelete {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+}

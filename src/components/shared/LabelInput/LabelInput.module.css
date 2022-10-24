@@ -1,0 +1,14 @@
+.label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.title {
+  color: var(--main-text-color-light, var(--main-text-color-dark));
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1rem;
+}

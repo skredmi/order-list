@@ -1,47 +1,56 @@
 import styles from "./Filter.module.css";
-import { Button } from "../../shared/Button/Button";
-import { Input } from "../../shared/Input/Input";
+import { Button } from "../../../../shared/Button/Button";
+import { Input } from "../../../../shared/Input/Input";
 import { FilterSumContainer } from "../FilterSumContainer/FilterSumContainer";
 import { FilterDateContainer } from "../FilterDateContainer/FilterDateContainer";
 import { FilterStatusContainer } from "../FilterStatusContainer/FilterStatusContainer";
 
 export const Filter = ({
-            inputSearchValue,
+  inputSearchValue,
   onChangeInputSeacrhValue,
   onClearInputValue,
   onOpenFiltersContainer,
-  isOpenFiltersContainer
+  isOpenFiltersContainer,
 }) => (
   <>
     <section className={styles.filter}>
       <div className={styles.item}>
         <Input
           placeholder="Номер заказа или ФИО"
-          inputStyle="search"
+          prefix={
+            <Button
+              nameIcon="search"
+              theme="transparent"
+              className={styles.iconSearch}
+            />
+          }
+          postfix={
+            <Button
+              nameIcon="xMedium"
+              theme="transparent"
+              className={styles.iconDelete}
+              onClick={onClearInputValue}
+            />
+          }
           value={inputSearchValue}
-          onClick={onClearInputValue}
           onChange={onChangeInputSeacrhValue}
         />
         <Button
           theme="primary"
-          fullWidth={false}
-          smallSize={false}
           nameIcon="filter"
+          className={styles.iconPrimary}
           onClick={onOpenFiltersContainer}
         >
           Фильтры
         </Button>
         {isOpenFiltersContainer && (
-          <Button theme="transparent" fullWidth={false} smallSize={false}>
-            Сбросить фильтры
-          </Button>
+          <Button theme="transparent">Сбросить фильтры</Button>
         )}
       </div>
       <Button
         theme="transparent"
-        fullWidth={false}
-        smallSize={false}
         nameIcon="refresh"
+        className={styles.iconTransparent}
       >
         Загрузка
       </Button>
@@ -52,9 +61,7 @@ export const Filter = ({
           <FilterDateContainer />
           <FilterStatusContainer />
           <FilterSumContainer />
-          <Button theme="transparent" fullWidth={false} smallSize={false}>
-            Применить
-          </Button>
+          <Button theme="transparent">Применить</Button>
         </div>
       </section>
     )}

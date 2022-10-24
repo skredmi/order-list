@@ -1,0 +1,18 @@
+.dropdown {
+  padding: 1rem;
+  position: absolute;
+  top: 2.5rem;
+  right: 0.8rem;
+  z-index: 1;
+  gap: 0.5rem;
+}
+
+.iconTransparent {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+}
+
+.iconPrimary {
+  fill: var(--main-background-color-light, var(--main-background-color-dark));
+  stroke: var(--main-background-color-light, var(--main-background-color-dark));
+}

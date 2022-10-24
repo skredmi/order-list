@@ -13,20 +13,19 @@ import { ReactComponent as VArrowIcon } from "./v_arrow.svg";
 import { ReactComponent as XLargeIcon } from "./x-large.svg";
 import { ReactComponent as XMediumIcon } from "./x-medium.svg";
 
-
 export const icons = {
-    abort: AbortIcon,
-    bin: BinIcon,
-    checkmark: CheckmarkIcon,
-    dot: DotIcon,
-    filter: FilterIcon,
-    locked: LockedIcon,
-    moon: MoonIcon,
-    pencil: PencilIcon,
-    refresh: RefreshIcon,
-    search: SearchIcon,
-    sun: SunIcon,
-    "v-arrow": VArrowIcon,
-    "x-large": XLargeIcon,
-    "x-medium": XMediumIcon
-  }
+  abort: AbortIcon,
+  bin: BinIcon,
+  checkmark: CheckmarkIcon,
+  dot: DotIcon,
+  filter: FilterIcon,
+  locked: LockedIcon,
+  moon: MoonIcon,
+  pencil: PencilIcon,
+  refresh: RefreshIcon,
+  search: SearchIcon,
+  sun: SunIcon,
+  vArrow: VArrowIcon,
+  xLarge: XLargeIcon,
+  xMedium: XMediumIcon,
+};

@@ -1,5 +1,4 @@
 import styles from "./Header.module.css";
-
 import { ThemeSwitcherContainer } from "../ThemeSwitcherContainer/ThemeSwitcherContainer";
 
 export const Header = () => (

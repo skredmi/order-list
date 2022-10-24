@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FilterSum } from "../FilterSum/FilterSum";
 
-export const FilterSumContainer = ({ className }) => {
+export const FilterSumContainer = () => {
   const [inputFromSumValue, setInputFromSumValue] = useState("");
   const [inputToSumValue, setInputToSumValue] = useState("");
 
@@ -22,7 +22,6 @@ export const FilterSumContainer = ({ className }) => {
 
   return (
     <FilterSum
-      className={className}
       inputFromSumValue={inputFromSumValue}
       inputToSumValue={inputToSumValue}
       onChangehValueFromSumInput={handleChangehValueFromSumInput}
