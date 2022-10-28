@@ -13,6 +13,12 @@
   --main-text-color-dark: #bcc4cc;
   --main-background-color-dark: #2b2d33;
   --secondary-background-color-dark: #171b1f;
+  --new-icon-color: #ff8c56;
+  --calculation-icon-color: #459df5;
+  --confirmed-icon-color: #0fb864;
+  --postponed-icon-color: #ff8c56;
+  --completed-icon-color: #0fb864;
+  --cancelled-icon-color: #bcc4cc;
 }
 
 :root[data-theme="light"] {

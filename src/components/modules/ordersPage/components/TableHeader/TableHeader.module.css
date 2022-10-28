@@ -13,43 +13,25 @@
 }
 
 .tableHeaderNumberOrder {
-  min-width: 5.75rem;
-  padding: 0.75rem 0.5rem;
+  min-width: 6.75rem;
 }
 
 .tableHeaderDate {
-  display: flex;
-  gap: 0.25rem;
-  min-width: 10rem;
-  padding: 0.75rem 0.5rem;
-}
-
-.tableHeaderIcon {
-  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
-  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  min-width: 11rem;
 }
 
 .tableHeaderStatus {
-  display: flex;
-  gap: 0.25rem;
-  min-width: 10rem;
-  padding: 0.75rem 0.5rem;
+  min-width: 11rem;
 }
 
 .tableHeaderCount {
-  display: flex;
-  gap: 0.25rem;
-  min-width: 5rem;
-  padding: 0.75rem 0.5rem;
+  min-width: 6rem;
 }
 
 .tableHeaderSum {
-  display: flex;
-  gap: 0.25rem;
-  min-width: 7rem;
-  padding: 0.75rem 0.5rem;
+  min-width: 8rem;
 }
 
 .tableHeaderConsumer {
-  min-width: 20.75rem;
+  min-width: 21.75rem;
 }
