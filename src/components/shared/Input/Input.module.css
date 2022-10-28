@@ -30,7 +30,7 @@
 }
 
 .incorrect {
-  border-color: var(--incorrect-state-border-color);
+  border-color: var(--incorrect-color);
 }
 
 .disabled {

@@ -6,6 +6,7 @@ const ButtonThemeTypes = {
   primary: "primary",
   transparent: "transparent",
   dark: "dark",
+  warning: "warning",
 };
 
 const ButtonSizeTypes = {
@@ -27,6 +28,7 @@ export const Button = ({
     [styles.colorPrimary]: theme === ButtonThemeTypes.primary,
     [styles.colorTransparent]: theme === ButtonThemeTypes.transparent,
     [styles.colorDark]: theme === ButtonThemeTypes.dark,
+    [styles.colorWarning]: theme === ButtonThemeTypes.warning,
     [styles.iconOnly]: !children && nameIcon,
     [styles.fullWidth]: isFullWidth,
     [styles.sizeSmall]: size === ButtonSizeTypes.small,

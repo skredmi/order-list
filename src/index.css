@@ -6,15 +6,14 @@
   --secondary-color: #bad8f5;
   --main-text-color: #000000;
   --main-background-color: #ffffff;
-  --incorrect-state-border-color: #f53152;
+  --incorrect-color: #f53152;
   --border-section-color: #8055ff;
   --dropdown-shadow-color: rgba(0, 0, 0, 0.1);
   --secondary-background-color: #ebf0f5;
-  --main-text-color-dark: #BCC4CC;
-  --main-background-color-dark: #2B2D33;
-  --secondary-background-color-dark: #171B1F;
+  --main-text-color-dark: #bcc4cc;
+  --main-background-color-dark: #2b2d33;
+  --secondary-background-color-dark: #171b1f;
 }
-
 
 :root[data-theme="light"] {
   --main-color-light: #459df5;
@@ -25,10 +24,10 @@
 }
 
 :root[data-theme="dark"] {
-  --main-text-color-dark: #BCC4CC;
-  --main-background-color-dark: #2B2D33;
-  --secondary-color-dark: #171B1F;
-  --secondary-text-color-dark: #454E52;
+  --main-text-color-dark: #bcc4cc;
+  --main-background-color-dark: #2b2d33;
+  --secondary-color-dark: #171b1f;
+  --secondary-text-color-dark: #454e52;
 }
 
 body {
@@ -36,5 +35,8 @@ body {
   font-family: "Ubuntu", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--main-background-color-light, var(--main-background-color-dark));
+  background-color: var(
+    --main-background-color-light,
+    var(--main-background-color-dark)
+  );
 }

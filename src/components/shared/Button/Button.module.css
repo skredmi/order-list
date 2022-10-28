@@ -37,6 +37,11 @@
   outline-color: var(--secondary-color);
 }
 
+.colorWarning {
+  background-color: var(--incorrect-color);
+  color: var(--main-background-color);
+}
+
 .iconOnly {
   padding: 0.5rem;
 }

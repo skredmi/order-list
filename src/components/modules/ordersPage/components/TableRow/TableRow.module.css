@@ -1,0 +1,55 @@
+.row {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  border-bottom: 0.0625rem solid
+    var(--secondary-color-light, var(--secondary-color-dark));
+}
+
+.rowCheckbox {
+  padding: 0.75rem 0.5rem;
+  line-height: 0;
+}
+
+.rowNumberOrder {
+  min-width: 5.75rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.rowDate {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 10rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.rowIcon {
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+}
+
+.rowStatus {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 10rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.rowCount {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 5rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.rowSum {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 7rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.rowConsumer {
+  min-width: 20.75rem;
+}

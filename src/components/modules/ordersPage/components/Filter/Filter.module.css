@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .item {
@@ -17,6 +17,7 @@
   padding: 1rem;
   background-color: var(--secondary-color-light, var(--secondary-color-dark));
   border-radius: 8px;
+  margin-bottom: 2rem;
 }
 
 .dropdownItem {
@@ -45,6 +46,6 @@
 }
 
 .iconDelete {
-  fill: var(--secondary-color);
-  stroke: var(--secondary-color);
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
 }

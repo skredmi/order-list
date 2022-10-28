@@ -1,0 +1,62 @@
+.tableFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  color: var(--main-color);
+  background-color: var(--secondary-color-light, var(--secondary-color-dark));
+}
+
+.tableFooterItems {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.tableFooterButton {
+  fill: var(--main-background-color-light, var(--main-background-color-dark));
+  stroke: var(--main-background-color-light, var(--main-background-color-dark));
+}
+
+.tableFooterButtonDelete {
+  fill: var(--main-background-color);
+  stroke: var(--main-background-color);
+}
+
+.tableFooterDropdown {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 5.5rem;
+}
+
+.radioDropdown {
+  display: none;
+}
+
+.tableFooterDeleteDropdown {
+  padding: 1rem;
+  position: absolute;
+  gap: 0.5rem;
+  bottom: 1.75rem;
+  right: -4.5rem;
+}
+
+.tableFooterPages {
+  display: flex;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.tableFooterPageDropdown {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.fieldPageDropdown {
+  padding: 0.5rem 0.25rem 0.5rem 0.5rem;
+}

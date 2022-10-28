@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import styles from "./Filter.module.css";
 import { Button } from "../../../../shared/Button/Button";
 import { Input } from "../../../../shared/Input/Input";
@@ -13,7 +14,7 @@ export const Filter = ({
   isOpenFiltersContainer,
 }) => (
   <>
-    <section className={styles.filter}>
+    <section className={classnames(styles.filter)}>
       <div className={styles.item}>
         <Input
           placeholder="Номер заказа или ФИО"
@@ -35,14 +36,26 @@ export const Filter = ({
           value={inputSearchValue}
           onChange={onChangeInputSeacrhValue}
         />
-        <Button
-          theme="primary"
-          nameIcon="filter"
-          className={styles.iconPrimary}
-          onClick={onOpenFiltersContainer}
-        >
-          Фильтры
-        </Button>
+        {isOpenFiltersContainer ? (
+          <Button
+            nameIcon="filter"
+            theme="primary"
+            className={styles.iconPrimary}
+            onClick={onOpenFiltersContainer}
+          >
+            Фильтры
+          </Button>
+        ) : (
+          <Button
+            nameIcon="filter"
+            theme="transparent"
+            className={styles.iconTransparent}
+            onClick={onOpenFiltersContainer}
+          >
+            Фильтры
+          </Button>
+        )}
+
         {isOpenFiltersContainer && (
           <Button theme="transparent">Сбросить фильтры</Button>
         )}

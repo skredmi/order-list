@@ -1,0 +1,55 @@
+.tableHeader {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: var(--main-color);
+  color: var(--secondary-color-light, var(--secondary-color-dark));
+}
+
+.tableHeaderCheckbox {
+  padding: 0.75rem 0.5rem;
+  line-height: 0;
+}
+
+.tableHeaderNumberOrder {
+  min-width: 5.75rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.tableHeaderDate {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 10rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.tableHeaderIcon {
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+}
+
+.tableHeaderStatus {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 10rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.tableHeaderCount {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 5rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.tableHeaderSum {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 7rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.tableHeaderConsumer {
+  min-width: 20.75rem;
+}

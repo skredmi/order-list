@@ -17,6 +17,7 @@ export const FilterStatus = ({
       control={
         <Input
           readOnly
+          onClick={handlOpenDropdownStatusClick}
           postfix={
             <Button
               nameIcon="vArrow"
