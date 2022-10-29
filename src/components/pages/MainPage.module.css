@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 0 3rem;
+  background-color: var(
+    --main-background-color-light,
+    var(--main-background-color-dark)
+  );
+  color: var(--main-text-color-light, var(--main-text-color-dark));
+}

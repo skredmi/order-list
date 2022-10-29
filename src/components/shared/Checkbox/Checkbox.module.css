@@ -1,0 +1,29 @@
+.checkbox {
+  position: relative;
+  box-sizing: border-box;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  cursor: pointer;
+}
+.area {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(
+    --main-background-color-light,
+    var(--main-background-color-dark)
+  );
+  border: 0.0625rem solid
+    var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  border-radius: 0.125rem;
+  box-sizing: border-box;
+  outline-color: var(--main-color);
+  appearance: none;
+  cursor: pointer;
+}
+
+.area:checked {
+  background-color: var(--main-color);
+  border: none;
+  background-image: url("../../../assets/icons/checkmark.svg");
+}

@@ -1,0 +1,40 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+:root {
+  --main-color: #459df5;
+  --secondary-color: #bad8f5;
+  --main-text-color: #000000;
+  --main-background-color: #ffffff;
+  --incorrect-state-border-color: #f53152;
+  --border-section-color: #8055ff;
+  --dropdown-shadow-color: rgba(0, 0, 0, 0.1);
+  --secondary-background-color: #ebf0f5;
+  --main-text-color-dark: #BCC4CC;
+  --main-background-color-dark: #2B2D33;
+  --secondary-background-color-dark: #171B1F;
+}
+
+
+:root[data-theme="light"] {
+  --main-color-light: #459df5;
+  --main-text-color-light: #000000;
+  --main-background-color-light: #ffffff;
+  --secondary-color-light: #ebf0f5;
+  --secondary-text-color-light: #bad8f5;
+}
+
+:root[data-theme="dark"] {
+  --main-text-color-dark: #BCC4CC;
+  --main-background-color-dark: #2B2D33;
+  --secondary-color-dark: #171B1F;
+  --secondary-text-color-dark: #454E52;
+}
+
+body {
+  margin: 0;
+  font-family: "Ubuntu", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-background-color-light, var(--main-background-color-dark));
+}
