@@ -1,82 +1,65 @@
+import { useContext, useState } from "react";
 import classnames from "classnames";
 import styles from "./Filter.module.css";
 import { Button } from "../../../../shared/Button/Button";
-import { Input } from "../../../../shared/Input/Input";
-import { FilterSumContainer } from "../FilterSumContainer/FilterSumContainer";
-import { FilterDateContainer } from "../FilterDateContainer/FilterDateContainer";
-import { FilterStatusContainer } from "../FilterStatusContainer/FilterStatusContainer";
+import { FilterSum } from "../FilterSum/FilterSum";
+import { FilterDate } from "../FilterDate/FilterDate";
+import { FilterStatus } from "../FilterStatus/FilterStatus";
+import { Icon } from "../../../../shared/Icon/Icon";
+import { FilterContext } from "../../../../context/FilterContext/FilterContext";
+import { Searchbar } from "../../../../shared/Searchbar/Searchbar";
 
-export const Filter = ({
-  inputSearchValue,
-  onChangeInputSeacrhValue,
-  onClearInputValue,
-  onOpenFiltersContainer,
-  isOpenFiltersContainer,
-}) => (
-  <>
-    <section className={classnames(styles.filter)}>
-      <div className={styles.item}>
-        <Input
-          placeholder="Номер заказа или ФИО"
-          prefix={
-            <Button
-              nameIcon="search"
-              theme="transparent"
-              className={styles.iconSearch}
-            />
-          }
-          postfix={
-            <Button
-              nameIcon="xMedium"
-              theme="transparent"
-              className={styles.iconDelete}
-              onClick={onClearInputValue}
-            />
-          }
-          value={inputSearchValue}
-          onChange={onChangeInputSeacrhValue}
-        />
-        {isOpenFiltersContainer ? (
+export const Filter = () => {
+  const { searchInput, resetAllFilters } = useContext(FilterContext);
+  const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
+
+  const handleOpenFiltersContainer = () => {
+    setIsOpenFiltersContainer(!isOpenFiltersContainer);
+  };
+
+  return (
+    <>
+      <section className={classnames(styles.filter)}>
+        <div className={styles.item}>
+          <Searchbar
+            placeholder="Номер заказа или ФИО"
+            value={searchInput.value}
+            onChange={searchInput.onChange}
+            onReset={searchInput.onReset}
+          />
           <Button
+            theme={isOpenFiltersContainer ? "primary" : "transparent"}
             nameIcon="filter"
-            theme="primary"
-            className={styles.iconPrimary}
-            onClick={onOpenFiltersContainer}
+            className={
+              isOpenFiltersContainer
+                ? styles.iconPrimary
+                : styles.iconTransparent
+            }
+            onClick={handleOpenFiltersContainer}
           >
             Фильтры
           </Button>
-        ) : (
-          <Button
-            nameIcon="filter"
-            theme="transparent"
-            className={styles.iconTransparent}
-            onClick={onOpenFiltersContainer}
-          >
-            Фильтры
-          </Button>
-        )}
-
-        {isOpenFiltersContainer && (
-          <Button theme="transparent">Сбросить фильтры</Button>
-        )}
-      </div>
-      <Button
-        theme="transparent"
-        nameIcon="refresh"
-        className={styles.iconTransparent}
-      >
-        Загрузка
-      </Button>
-    </section>
-    {isOpenFiltersContainer && (
-      <section className={styles.dropdown}>
-        <div className={styles.dropdownItem}>
-          <FilterDateContainer />
-          <FilterStatusContainer />
-          <FilterSumContainer />
-          <Button theme="transparent">Применить</Button>
+          {isOpenFiltersContainer && (
+            <Button theme="transparent" onClick={resetAllFilters.onClick}>
+              Сбросить фильтры
+            </Button>
+          )}
+        </div>
+        <div className={styles.filterLoad}>
+          <Icon nameIcon="refresh" className={styles.iconLoad} />
+          Загрузка
         </div>
       </section>
-    )}
-  </>
-);
+      {isOpenFiltersContainer && (
+        <section className={styles.dropdown}>
+          <div className={styles.dropdownItem}>
+            <FilterDate />
+            <FilterStatus />
+            <FilterSum />
+            <Button theme="transparent">Применить</Button>
+          </div>
+        </section>
+      )}
+    </>
+  );
+};

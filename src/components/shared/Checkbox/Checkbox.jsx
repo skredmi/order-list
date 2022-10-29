@@ -6,6 +6,7 @@ export const Checkbox = ({ className, checked, onChange, ...props }) => (
     type="checkbox"
     className={classnames(styles.area, className)}
     checked={checked}
+    onChange={onChange}
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   />

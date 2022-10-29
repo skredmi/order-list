@@ -10,3 +10,7 @@
   fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
   stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
 }
+
+.datePrefix {
+  padding-left: 1rem;
+}

@@ -1,4 +1,5 @@
-.input {
+.searchbar {
+  width: 20rem;
   color: var(--main-text-color-light, var(--main-text-color-dark));
   font-size: 0.8125rem;
   font-weight: 400;
@@ -6,11 +7,11 @@
   position: relative;
 }
 
-.inputField {
+.searchbarField {
   flex-wrap: wrap;
   width: 100%;
   height: 2rem;
-  padding: 0.5rem 1.75rem 0.5rem 0.25rem;
+  padding: 0.5rem 2rem 0.5rem 2rem;
   box-sizing: border-box;
   border: 0.0625rem solid var(--main-color);
   border-radius: 0.25rem;
@@ -21,36 +22,26 @@
   color: var(--main-text-color-light, var(--main-text-color-dark));
 }
 
-.inputField:focus {
+.searchbarField:focus {
   outline-color: var(--main-color-light, var(--main-background-color-dark));
 }
 
-.inputField::placeholder {
+.searchbarField::placeholder {
   color: var(--secondary-text-color-light, var(--secondary-text-color-dark));
 }
 
-.incorrect {
-  border-color: var(--incorrect-color);
-}
-
-.disabled {
-  background-color: var(--secondary-color);
-  color: var(--main-text-color);
-}
-
-.prefix {
+.iconSearch {
+  fill: var(--main-color);
+  stroke: var(--main-color);
   position: absolute;
-  box-sizing: border-box;
-  bottom: 0.5rem;
+  top: 0.5rem;
   left: 0.5rem;
 }
 
-.postfix {
+.iconDelete {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
   position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.inputPrefix {
-  padding-left: 1.5rem;
+  bottom: 0.25rem;
+  right: 0.25rem;
 }

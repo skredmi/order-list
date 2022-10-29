@@ -1,6 +1,5 @@
 import classnames from "classnames";
 import styles from "./Input.module.css";
-/* import { Button } from "../Button/Button"; */
 import { Icon } from "../Icon/Icon";
 
 const InputTypes = {
