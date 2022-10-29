@@ -37,16 +37,16 @@ export const FilterStatus = () => {
       />
       {statusfilterDropdown.isOpen && (
         <Dropdown className={styles.dropdown}>
-          {statusFilter.status.map((el) => (
+          {statusFilter.status.map((item) => (
             <LabelControl
-              key={el}
+              key={item}
               control={
                 <Checkbox
-                  checked={el[1]}
-                  onChange={() => statusFilter.onChange(el[0])}
+                  checked={item[1]}
+                  onChange={() => statusFilter.onChange(item[0])}
                 />
               }
-              label={FILTER_STATUSES[el[0]]}
+              label={FILTER_STATUSES[item[0]]}
             />
           ))}
         </Dropdown>

@@ -9,7 +9,7 @@ export const FILTER_STATUSES = {
   confirmed: "Подтвержден",
   postponed: "Отложен",
   completed: "Выполнен",
-  canceled: "Отменен",
+  cancelled: "Отменен",
 };
 
 export const FilterContextProvider = ({ children }) => {
@@ -69,12 +69,15 @@ export const FilterContextProvider = ({ children }) => {
     confirmed: false,
     postponed: false,
     completed: false,
-    canceled: false,
+    cancelled: false,
   });
 
   const handleChangeStatusValues = useCallback(
-    (el) => {
-      setInputStatusValue({ ...inputStatusValue, [el]: !inputStatusValue[el] });
+    (item) => {
+      setInputStatusValue({
+        ...inputStatusValue,
+        [item]: !inputStatusValue[item],
+      });
     },
     [inputStatusValue]
   );
