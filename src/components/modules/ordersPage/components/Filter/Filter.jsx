@@ -1,62 +1,55 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./Filter.module.css";
 import { Button } from "../../../../shared/Button/Button";
-import { Input } from "../../../../shared/Input/Input";
 import { FilterSum } from "../FilterSum/FilterSum";
 import { FilterDate } from "../FilterDate/FilterDate";
 import { FilterStatus } from "../FilterStatus/FilterStatus";
+import { Icon } from "../../../../shared/Icon/Icon";
 import { FilterContext } from "../../../../context/FilterContext/FilterContext";
+import { Searchbar } from "../../../../shared/Searchbar/Searchbar";
 
 export const Filter = () => {
-  const { filtersDropdown, searchInput, resetAllFilters } =
-    useContext(FilterContext);
+  const { searchInput, resetAllFilters } = useContext(FilterContext);
+  const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
+
+  const handleOpenFiltersContainer = () => {
+    setIsOpenFiltersContainer(!isOpenFiltersContainer);
+  };
+
   return (
     <>
       <section className={styles.filter}>
         <div className={styles.item}>
-          <Input
+          <Searchbar
             placeholder="Номер заказа или ФИО"
-            prefix={
-              <Button
-                nameIcon="search"
-                theme="transparent"
-                className={styles.iconSearch}
-              />
-            }
-            postfix={
-              <Button
-                nameIcon="xMedium"
-                theme="transparent"
-                className={styles.iconDelete}
-                onClick={searchInput.onReset}
-              />
-            }
             value={searchInput.value}
             onChange={searchInput.onChange}
+            onReset={searchInput.onReset}
           />
           <Button
-            theme="primary"
+            theme={isOpenFiltersContainer ? "primary" : "transparent"}
             nameIcon="filter"
-            className={styles.iconPrimary}
-            onClick={filtersDropdown.onClick}
+            className={
+              isOpenFiltersContainer
+                ? styles.iconPrimary
+                : styles.iconTransparent
+            }
+            onClick={handleOpenFiltersContainer}
           >
             Фильтры
           </Button>
-          {filtersDropdown.isOpen && (
+          {isOpenFiltersContainer && (
             <Button theme="transparent" onClick={resetAllFilters.onClick}>
               Сбросить фильтры
             </Button>
           )}
         </div>
-        <Button
-          theme="transparent"
-          nameIcon="refresh"
-          className={styles.iconTransparent}
-        >
+        <div className={styles.filterLoad}>
+          <Icon nameIcon="refresh" className={styles.iconLoad} />
           Загрузка
-        </Button>
+        </div>
       </section>
-      {filtersDropdown.isOpen && (
+      {isOpenFiltersContainer && (
         <section className={styles.dropdown}>
           <div className={styles.dropdownItem}>
             <FilterDate />

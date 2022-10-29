@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import classnames from "classnames";
 import styles from "./FilterStatus.module.css";
 import { Input } from "../../../../shared/Input/Input";
@@ -13,7 +13,13 @@ import {
 } from "../../../../context/FilterContext/FilterContext";
 
 export const FilterStatus = () => {
-  const { statusfilterDropdown, statusFilter } = useContext(FilterContext);
+  const { statusFilter } = useContext(FilterContext);
+
+  const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);
+
+  const handlOpenDropdownStatusClick = () => {
+    setIsOpenDropdownStatus(!isOpenDropdownStatus);
+  };
 
   return (
     <div className={classnames(styles.content)}>
@@ -26,16 +32,16 @@ export const FilterStatus = () => {
               <Button
                 nameIcon="vArrow"
                 theme="transparent"
-                onClick={statusfilterDropdown.onClick}
+                onClick={handlOpenDropdownStatusClick}
                 className={styles.iconDropdown}
               />
             }
-            onClick={statusfilterDropdown.onClick}
+            onClick={handlOpenDropdownStatusClick}
             value={statusFilter.valueInput}
           />
         }
       />
-      {statusfilterDropdown.isOpen && (
+      {isOpenDropdownStatus && (
         <Dropdown className={styles.dropdown}>
           {statusFilter.status.map((item) => (
             <LabelControl

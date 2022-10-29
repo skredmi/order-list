@@ -21,24 +21,24 @@ export const ThemeSwitcher = ({
     {isOpen && (
       <Dropdown title="Выберите тему" className={styles.dropdown}>
         <Button
-          theme={theme === "light" ? "transparent" : "primary"}
+          theme={theme === "light" ? "primary" : "transparent"}
           isFullWidth
           size="small"
           nameIcon="sun"
           className={
-            theme === "light" ? styles.iconTransparent : styles.iconPrimary
+            theme === "light" ? styles.iconPrimary : styles.iconTransparent
           }
           onClick={() => onHandleSwithThemeClick(themeTypes.light)}
         >
           Светлая
         </Button>
         <Button
-          theme={theme === "dark" ? "transparent" : "primary"}
+          theme={theme === "dark" ? "primary" : "transparent"}
           isFullWidth
           size="small"
           nameIcon="moon"
           className={
-            theme === "dark" ? styles.iconTransparent : styles.iconPrimary
+            theme === "dark" ? styles.iconPrimary : styles.iconTransparent
           }
           onClick={() => onHandleSwithThemeClick(themeTypes.dark)}
         >

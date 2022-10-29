@@ -13,14 +13,6 @@ export const FILTER_STATUSES = {
 };
 
 export const FilterContextProvider = ({ children }) => {
-  // filters dropdown open
-
-  const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
-
-  const handleOpenFiltersContainer = useCallback(() => {
-    setIsOpenFiltersContainer(!isOpenFiltersContainer);
-  }, [isOpenFiltersContainer]);
-
   // search input get/clear value
 
   const [inputSeacrhValue, setInputSeacrhValue] = useState("");
@@ -53,14 +45,6 @@ export const FilterContextProvider = ({ children }) => {
     setInputToDateValue("");
   }, []);
 
-  // status filter dropdown open
-
-  const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);
-
-  const handlOpenDropdownStatusClick = useCallback(() => {
-    setIsOpenDropdownStatus(!isOpenDropdownStatus);
-  }, [isOpenDropdownStatus]);
-
   // status filter get value
 
   const [inputStatusValue, setInputStatusValue] = useState({
@@ -86,10 +70,14 @@ export const FilterContextProvider = ({ children }) => {
     const statuses = Object.keys(inputStatusValue)
       .filter((status) => inputStatusValue[status])
       .map((status) => FILTER_STATUSES[status]);
-    return statuses.length ? statuses.join(", ") : FILTER_STATUSES.any;
+    const inputValues =
+      !statuses.length || statuses.length === 6
+        ? FILTER_STATUSES.any
+        : statuses.join(", ");
+    return inputValues;
   }, [inputStatusValue]);
 
-  const statuses = Object.entries(inputStatusValue);
+  const inputValue = Object.entries(inputStatusValue);
 
   // sum filter get/clear value
 
@@ -122,7 +110,7 @@ export const FilterContextProvider = ({ children }) => {
       confirmed: false,
       postponed: false,
       completed: false,
-      canceled: false,
+      cancelled: false,
     });
     setInputFromSumValue("");
     setInputToSumValue("");
@@ -130,11 +118,6 @@ export const FilterContextProvider = ({ children }) => {
 
   const value = useMemo(
     () => ({
-      filtersDropdown: {
-        isOpen: isOpenFiltersContainer,
-        onClick: handleOpenFiltersContainer,
-      },
-
       searchInput: {
         value: inputSeacrhValue,
         onChange: handleChangehValueSeacrhInput,
@@ -150,13 +133,8 @@ export const FilterContextProvider = ({ children }) => {
         onResetToDate: handleResetValueToDateInput,
       },
 
-      statusfilterDropdown: {
-        isOpen: isOpenDropdownStatus,
-        onClick: handlOpenDropdownStatusClick,
-      },
-
       statusFilter: {
-        status: statuses,
+        status: inputValue,
         valueInput: checkedStatuses,
         onChange: handleChangeStatusValues,
       },
@@ -175,14 +153,12 @@ export const FilterContextProvider = ({ children }) => {
       },
     }),
     [
-      handleOpenFiltersContainer,
       handleChangehValueSeacrhInput,
       handleResetValue,
       handleChangehValueFromDateInput,
       handleChangehValueToDateInput,
       handleResetValueFromDateInput,
       handleResetValueToDateInput,
-      handlOpenDropdownStatusClick,
       handleChangeStatusValues,
       handleChangehValueFromSumInput,
       handleChangehValueToSumInput,
@@ -192,11 +168,9 @@ export const FilterContextProvider = ({ children }) => {
       inputSeacrhValue,
       inputFromDateValue,
       inputToDateValue,
-      isOpenDropdownStatus,
       inputFromSumValue,
       inputToSumValue,
-      isOpenFiltersContainer,
-      statuses,
+      inputValue,
     ]
   );
 

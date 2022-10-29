@@ -27,6 +27,7 @@ export const FilterDate = () => {
             }
             value={dateFilter.valueFromDate}
             onChange={dateFilter.onChangeFromDate}
+            className={styles.datePrefix}
           />
         }
       />
