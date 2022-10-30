@@ -1,10 +1,9 @@
-import classnames from "classnames";
 import styles from "./TableHeader.module.css";
 import { Checkbox } from "../../../../shared/Checkbox/Checkbox";
 import { TableHeaderCell } from "../TableHeaderCell/TableHeaderCell";
 
 export const TableHeader = () => (
-  <section className={classnames(styles.tableHeader)}>
+  <section className={styles.tableHeader}>
     <div className={styles.tableHeaderCheckbox}>
       <Checkbox />
     </div>

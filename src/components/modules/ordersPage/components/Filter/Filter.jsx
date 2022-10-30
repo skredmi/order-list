@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import classnames from "classnames";
 import styles from "./Filter.module.css";
 import { Button } from "../../../../shared/Button/Button";
 import { FilterSum } from "../FilterSum/FilterSum";
@@ -19,7 +18,7 @@ export const Filter = () => {
 
   return (
     <>
-      <section className={classnames(styles.filter)}>
+      <section className={styles.filter}>
         <div className={styles.item}>
           <Searchbar
             placeholder="Номер заказа или ФИО"

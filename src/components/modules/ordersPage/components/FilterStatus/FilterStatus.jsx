@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import classnames from "classnames";
+import { useState, useContext } from "react";
 import styles from "./FilterStatus.module.css";
 import { Input } from "../../../../shared/Input/Input";
 import { Button } from "../../../../shared/Button/Button";
@@ -7,10 +6,17 @@ import { Dropdown } from "../../../../shared/Dropdown/Dropdown";
 import { Checkbox } from "../../../../shared/Checkbox/Checkbox";
 import { LabelInput } from "../../../../shared/LabelInput/LabelInput";
 import { LabelControl } from "../../../../shared/LabelControl/LabelControl";
-import {
-  FilterContext,
-  FILTER_STATUSES,
-} from "../../../../context/FilterContext/FilterContext";
+import { FilterContext } from "../../../../context/FilterContext/FilterContext";
+
+const FILTER_STATUSES = {
+  any: "Любой",
+  new: "Новый",
+  calculation: "Рассчет",
+  confirmed: "Подтвержден",
+  postponed: "Отложен",
+  completed: "Выполнен",
+  cancelled: "Отменен",
+};
 
 export const FilterStatus = () => {
   const { statusFilter } = useContext(FilterContext);
@@ -21,8 +27,21 @@ export const FilterStatus = () => {
     setIsOpenDropdownStatus(!isOpenDropdownStatus);
   };
 
+  const checkedStatuses = () => {
+    const statuses = Object.keys(statusFilter.value)
+      .filter((status) => statusFilter.value[status])
+      .map((status) => FILTER_STATUSES[status]);
+    const inputValues =
+      !statuses.length || statuses.length === 6
+        ? FILTER_STATUSES.any
+        : statuses.join(", ");
+    return inputValues;
+  };
+
+  const inputValue = Object.entries(statusFilter.value);
+
   return (
-    <div className={classnames(styles.content)}>
+    <div className={styles.content}>
       <LabelInput
         label="Статус заказа"
         control={
@@ -37,13 +56,13 @@ export const FilterStatus = () => {
               />
             }
             onClick={handlOpenDropdownStatusClick}
-            value={statusFilter.valueInput}
+            value={checkedStatuses()}
           />
         }
       />
       {isOpenDropdownStatus && (
         <Dropdown className={styles.dropdown}>
-          {statusFilter.status.map((item) => (
+          {inputValue.map((item) => (
             <LabelControl
               key={item}
               control={

@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import { useEffect, useState } from "react";
 import styles from "./TableBody.module.css";
 import { mock } from "../../mock/mock";
@@ -12,7 +11,7 @@ export const TableBody = () => {
   }, []);
 
   return (
-    <div className={classnames(styles.container)}>
+    <div className={styles.container}>
       {showOrders.map((item) => (
         <TableRow key={item.id} item={item} />
       ))}

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import classnames from "classnames";
 import styles from "./FilterDate.module.css";
 import { LabelInput } from "../../../../shared/LabelInput/LabelInput";
 import { Input } from "../../../../shared/Input/Input";
@@ -10,7 +9,7 @@ export const FilterDate = () => {
   const { dateFilter } = useContext(FilterContext);
 
   return (
-    <div className={classnames(styles.content)}>
+    <div className={styles.content}>
       <LabelInput
         label="Дата оформления"
         control={

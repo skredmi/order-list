@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import classnames from "classnames";
 import styles from "./FilterSum.module.css";
 import { Input } from "../../../../shared/Input/Input";
 import { Button } from "../../../../shared/Button/Button";
@@ -9,7 +8,7 @@ import { FilterContext } from "../../../../context/FilterContext/FilterContext";
 export const FilterSum = () => {
   const { sumFilter } = useContext(FilterContext);
   return (
-    <div className={classnames(styles.content)}>
+    <div className={styles.content}>
       <LabelInput
         label="Сумма заказа"
         control={

@@ -2,52 +2,42 @@ import { createContext, useMemo, useState, useCallback } from "react";
 
 export const FilterContext = createContext();
 
-export const FILTER_STATUSES = {
-  any: "Любой",
-  new: "Новый",
-  calculation: "Рассчет",
-  confirmed: "Подтвержден",
-  postponed: "Отложен",
-  completed: "Выполнен",
-  cancelled: "Отменен",
-};
-
 export const FilterContextProvider = ({ children }) => {
   // search input get/clear value
 
-  const [inputSeacrhValue, setInputSeacrhValue] = useState("");
+  const [seacrhValue, setSeacrhValue] = useState("");
 
   const handleChangehValueSeacrhInput = useCallback((event) => {
-    setInputSeacrhValue(event.target.value);
+    setSeacrhValue(event.target.value);
   }, []);
 
   const handleResetValue = useCallback(() => {
-    setInputSeacrhValue("");
+    setSeacrhValue("");
   }, []);
 
   // date filter get/clear value
 
-  const [inputFromDateValue, setInputFromDateValue] = useState("");
-  const [inputToDateValue, setInputToDateValue] = useState("");
+  const [fromDateValue, setFromDateValue] = useState("");
+  const [toDateValue, setToDateValue] = useState("");
 
   const handleChangehValueFromDateInput = useCallback((event) => {
-    setInputFromDateValue(event.target.value);
+    setFromDateValue(event.target.value);
   }, []);
 
   const handleChangehValueToDateInput = useCallback((event) => {
-    setInputToDateValue(event.target.value);
+    setToDateValue(event.target.value);
   }, []);
 
   const handleResetValueFromDateInput = useCallback(() => {
-    setInputFromDateValue("");
+    setFromDateValue("");
   }, []);
   const handleResetValueToDateInput = useCallback(() => {
-    setInputToDateValue("");
+    setToDateValue("");
   }, []);
 
   // status filter get value
 
-  const [inputStatusValue, setInputStatusValue] = useState({
+  const [statusValue, setStatusValue] = useState({
     new: false,
     calculation: false,
     confirmed: false,
@@ -58,53 +48,40 @@ export const FilterContextProvider = ({ children }) => {
 
   const handleChangeStatusValues = useCallback(
     (item) => {
-      setInputStatusValue({
-        ...inputStatusValue,
-        [item]: !inputStatusValue[item],
+      setStatusValue({
+        ...statusValue,
+        [item]: !statusValue[item],
       });
     },
-    [inputStatusValue]
+    [statusValue]
   );
-
-  const checkedStatuses = useMemo(() => {
-    const statuses = Object.keys(inputStatusValue)
-      .filter((status) => inputStatusValue[status])
-      .map((status) => FILTER_STATUSES[status]);
-    const inputValues =
-      !statuses.length || statuses.length === 6
-        ? FILTER_STATUSES.any
-        : statuses.join(", ");
-    return inputValues;
-  }, [inputStatusValue]);
-
-  const inputValue = Object.entries(inputStatusValue);
 
   // sum filter get/clear value
 
-  const [inputFromSumValue, setInputFromSumValue] = useState("");
-  const [inputToSumValue, setInputToSumValue] = useState("");
+  const [fromSumValue, setFromSumValue] = useState("");
+  const [toSumValue, setToSumValue] = useState("");
 
   const handleChangehValueFromSumInput = useCallback((event) => {
-    setInputFromSumValue(event.target.value);
+    setFromSumValue(event.target.value);
   }, []);
 
   const handleChangehValueToSumInput = useCallback((event) => {
-    setInputToSumValue(event.target.value);
+    setToSumValue(event.target.value);
   }, []);
 
   const handleResetValueFromSumInput = useCallback(() => {
-    setInputFromSumValue("");
+    setFromSumValue("");
   }, []);
   const handleResetValueToSumInput = useCallback(() => {
-    setInputToSumValue("");
+    setToSumValue("");
   }, []);
 
   // clear all filters value
 
   const handleResetAllFilters = () => {
-    setInputFromDateValue("");
-    setInputToDateValue("");
-    setInputStatusValue({
+    setFromDateValue("");
+    setToDateValue("");
+    setStatusValue({
       new: false,
       calculation: false,
       confirmed: false,
@@ -112,21 +89,21 @@ export const FilterContextProvider = ({ children }) => {
       completed: false,
       cancelled: false,
     });
-    setInputFromSumValue("");
-    setInputToSumValue("");
+    setFromSumValue("");
+    setToSumValue("");
   };
 
   const value = useMemo(
     () => ({
       searchInput: {
-        value: inputSeacrhValue,
+        value: seacrhValue,
         onChange: handleChangehValueSeacrhInput,
         onReset: handleResetValue,
       },
 
       dateFilter: {
-        valueFromDate: inputFromDateValue,
-        valueToDate: inputToDateValue,
+        valueFromDate: fromDateValue,
+        valueToDate: toDateValue,
         onChangeFromDate: handleChangehValueFromDateInput,
         onChangeToDate: handleChangehValueToDateInput,
         onResetFromDate: handleResetValueFromDateInput,
@@ -134,14 +111,13 @@ export const FilterContextProvider = ({ children }) => {
       },
 
       statusFilter: {
-        status: inputValue,
-        valueInput: checkedStatuses,
+        value: statusValue,
         onChange: handleChangeStatusValues,
       },
 
       sumFilter: {
-        valueFromSum: inputFromSumValue,
-        valueToSum: inputToSumValue,
+        valueFromSum: fromSumValue,
+        valueToSum: toSumValue,
         onChangeFromSum: handleChangehValueFromSumInput,
         onChangeToSum: handleChangehValueToSumInput,
         onResetFromSum: handleResetValueFromSumInput,
@@ -164,13 +140,12 @@ export const FilterContextProvider = ({ children }) => {
       handleChangehValueToSumInput,
       handleResetValueFromSumInput,
       handleResetValueToSumInput,
-      checkedStatuses,
-      inputSeacrhValue,
-      inputFromDateValue,
-      inputToDateValue,
-      inputFromSumValue,
-      inputToSumValue,
-      inputValue,
+      seacrhValue,
+      fromDateValue,
+      toDateValue,
+      fromSumValue,
+      toSumValue,
+      statusValue,
     ]
   );
 

@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import { useState } from "react";
 import styles from "./TableFooter.module.css";
 import { Button } from "../../../../shared/Button/Button";
@@ -26,7 +25,7 @@ export const TableFooter = () => {
   };
 
   return (
-    <section className={classnames(styles.tableFooter)}>
+    <section className={styles.tableFooter}>
       <div className={styles.tableFooterItems}>
         <div>Выбрано записей: 5</div>
         <Button
