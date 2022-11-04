@@ -1,12 +1,46 @@
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilterDate.module.css";
 import { LabelInput } from "../../../../shared/LabelInput/LabelInput";
 import { Input } from "../../../../shared/Input/Input";
 import { Button } from "../../../../shared/Button/Button";
-import { FilterContext } from "../../../../context/FilterContext/FilterContext";
+import {
+  changeFromDateValue,
+  resetFromDateValue,
+  changeToDateValue,
+  resetToDateValue,
+} from "../../../../store/slices/filterSlice";
 
 export const FilterDate = () => {
-  const { dateFilter } = useContext(FilterContext);
+  const dispatch = useDispatch();
+
+  const getFromDateValue = useSelector((state) => state.filter.fromDatevalue);
+  const getToDateValue = useSelector((state) => state.filter.toDateValue);
+
+  const handleChangeFromDate = (event) => {
+    dispatch(
+      changeFromDateValue({
+        type: "changeFromDateValue",
+        value: event.target.value,
+      })
+    );
+  };
+
+  const handleChangeToDate = (event) => {
+    dispatch(
+      changeToDateValue({
+        type: "changeToDateValue",
+        value: event.target.value,
+      })
+    );
+  };
+
+  const handleResetFromDate = () => {
+    dispatch(resetFromDateValue());
+  };
+
+  const handleResetToDate = () => {
+    dispatch(resetToDateValue());
+  };
 
   return (
     <div className={styles.content}>
@@ -21,11 +55,11 @@ export const FilterDate = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={dateFilter.onResetFromDate}
+                onClick={handleResetFromDate}
               />
             }
-            value={dateFilter.valueFromDate}
-            onChange={dateFilter.onChangeFromDate}
+            value={getFromDateValue}
+            onChange={handleChangeFromDate}
             className={styles.datePrefix}
           />
         }
@@ -38,11 +72,11 @@ export const FilterDate = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={dateFilter.onResetToDate}
+            onClick={handleResetToDate}
           />
         }
-        value={dateFilter.valueToDate}
-        onChange={dateFilter.onChangeToDate}
+        value={getToDateValue}
+        onChange={handleChangeToDate}
       />
     </div>
   );
