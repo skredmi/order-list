@@ -1,9 +1,0 @@
-.table {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  font-weight: 400;
-  font-size: 0.8125rem;
-  line-height: 1rem;
-}
