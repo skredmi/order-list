@@ -3,6 +3,7 @@ import { ThemeContext, themeTypes } from "../ThemeContext/ThemeContext";
 import styles from "./ThemeSwitcher.module.css";
 import { Button } from "../../shared/Button/Button";
 import { Dropdown } from "../../shared/Dropdown/Dropdown";
+import { LabelInput } from "../../shared/LabelInput/LabelInput";
 
 export const ThemeSwitcher = () => {
   const [isOpenThemeSwitcher, setIsOpenThemeSwitcher] = useState(false);
@@ -26,31 +27,42 @@ export const ThemeSwitcher = () => {
         {theme === "light" ? "Светлая тема" : "Темная тема"}
       </Button>
       {isOpenThemeSwitcher && (
-        <Dropdown title="Выберите тему" className={styles.dropdown}>
-          <Button
-            theme={theme === "light" ? "primary" : "transparent"}
-            isFullWidth
-            size="small"
-            nameIcon="sun"
-            className={
-              theme === "light" ? styles.iconPrimary : styles.iconTransparent
+        <Dropdown className={styles.dropdown}>
+          <LabelInput
+            control={
+              <>
+                <Button
+                  theme={theme === "light" ? "primary" : "transparent"}
+                  isFullWidth
+                  size="small"
+                  nameIcon="sun"
+                  className={
+                    theme === "light"
+                      ? styles.iconPrimary
+                      : styles.iconTransparent
+                  }
+                  onClick={() => handleSwitchTheme(themeTypes.light)}
+                >
+                  Светлая
+                </Button>
+                <Button
+                  theme={theme === "dark" ? "primary" : "transparent"}
+                  isFullWidth
+                  size="small"
+                  nameIcon="moon"
+                  className={
+                    theme === "dark"
+                      ? styles.iconPrimary
+                      : styles.iconTransparent
+                  }
+                  onClick={() => handleSwitchTheme(themeTypes.dark)}
+                >
+                  Темная
+                </Button>
+              </>
             }
-            onClick={() => handleSwitchTheme(themeTypes.light)}
-          >
-            Светлая
-          </Button>
-          <Button
-            theme={theme === "dark" ? "primary" : "transparent"}
-            isFullWidth
-            size="small"
-            nameIcon="moon"
-            className={
-              theme === "dark" ? styles.iconPrimary : styles.iconTransparent
-            }
-            onClick={() => handleSwitchTheme(themeTypes.dark)}
-          >
-            Темная
-          </Button>
+            label="Выберите тему"
+          />
         </Dropdown>
       )}
     </>

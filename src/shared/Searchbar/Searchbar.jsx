@@ -21,11 +21,13 @@ export const Searchbar = ({
       {...props}
     />
     <Icon nameIcon="search" className={styles.iconSearch} />
-    <Button
-      nameIcon="xMedium"
-      theme="transparent"
-      className={styles.iconDelete}
-      onClick={onReset}
-    />
+    {value && (
+      <Button
+        nameIcon="xMedium"
+        theme="transparent"
+        className={styles.iconDelete}
+        onClick={onReset}
+      />
+    )}
   </div>
 );

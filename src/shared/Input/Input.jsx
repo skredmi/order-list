@@ -38,7 +38,7 @@ export const Input = ({
         {...props}
       />
       {disabled && <Icon nameIcon="locked" className={styles.iconLocked} />}
-      {postfix && <div className={styles.postfix}>{postfix}</div>}
+      {value && postfix && <div className={styles.postfix}>{postfix}</div>}
     </div>
   );
 };
