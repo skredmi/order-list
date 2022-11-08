@@ -1,7 +1,21 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { searchValue: "", fromDatevalue: "", toDateValue: "" };
+const initialState = {
+  searchValue: "",
+  fromDatevalue: "",
+  toDateValue: "",
+  fromSumValue: "",
+  toSumValue: "",
+  statusValue: {
+    new: false,
+    calculation: false,
+    confirmed: false,
+    postponed: false,
+    completed: false,
+    cancelled: false,
+  },
+};
 
 export const filterSlice = createSlice({
   name: "filters",
@@ -25,9 +39,25 @@ export const filterSlice = createSlice({
     resetToDateValue(state) {
       state.toDateValue = "";
     },
+    changeFromSumValue(state, action) {
+      state.fromSumValue = action.payload.value;
+    },
+    resetFromSumValue(state) {
+      state.fromSumValue = "";
+    },
+    changeToSumValue(state, action) {
+      state.toSumValue = action.payload.value;
+    },
+    resetToSumValue(state) {
+      state.toSumValue = "";
+    },
     resetAllValue(state) {
       state.fromDatevalue = "";
       state.toDateValue = "";
+      state.fromSumValue = "";
+      state.toSumValue = "";
+      state.fromSumValue = "";
+      state.toSumValue = "";
     },
   },
 });
@@ -39,6 +69,11 @@ export const {
   resetFromDateValue,
   changeToDateValue,
   resetToDateValue,
+  changeStatusValue,
+  changeFromSumValue,
+  resetFromSumValue,
+  changeToSumValue,
+  resetToSumValue,
   resetAllValue,
 } = filterSlice.actions;
 export default filterSlice.reducer;

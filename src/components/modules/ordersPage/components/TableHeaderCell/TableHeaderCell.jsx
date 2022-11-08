@@ -3,7 +3,7 @@ import styles from "./TableHeaderCell.module.css";
 /* import { Icon } from "../../../../shared/Icon/Icon"; */
 import { Button } from "../../../../shared/Button/Button";
 
-export const TableHeaderCell = ({ title, nameIcon, className }) => (
+export const TableHeaderCell = ({ title, nameIcon, className, onClick }) => (
   <div className={classnames(styles.cell, className)}>
     {title}
     {Button && (
@@ -12,6 +12,7 @@ export const TableHeaderCell = ({ title, nameIcon, className }) => (
         size="small"
         nameIcon={nameIcon}
         className={styles.cellIcon}
+        onClick={onClick}
       />
     )}
   </div>

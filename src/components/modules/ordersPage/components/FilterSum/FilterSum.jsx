@@ -1,12 +1,47 @@
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilterSum.module.css";
 import { Input } from "../../../../shared/Input/Input";
 import { Button } from "../../../../shared/Button/Button";
 import { LabelInput } from "../../../../shared/LabelInput/LabelInput";
-import { FilterContext } from "../../../../context/FilterContext/FilterContext";
+import {
+  changeFromSumValue,
+  resetFromSumValue,
+  changeToSumValue,
+  resetToSumValue,
+} from "../../../../store/slices/filterSlice";
 
 export const FilterSum = () => {
-  const { sumFilter } = useContext(FilterContext);
+  const dispatch = useDispatch();
+
+  const getFromSumValue = useSelector((state) => state.filter.fromSumValue);
+  const getToSumValue = useSelector((state) => state.filter.toSumValue);
+
+  const handleChangeFromSumValue = (event) => {
+    dispatch(
+      changeFromSumValue({
+        type: "changeFromSumValue",
+        value: event.target.value,
+      })
+    );
+  };
+
+  const handleChangeToSumValue = (event) => {
+    dispatch(
+      changeToSumValue({
+        type: "changeToSumValue",
+        value: event.target.value,
+      })
+    );
+  };
+
+  const handleResetFromSumValue = () => {
+    dispatch(resetFromSumValue());
+  };
+
+  const handleResetToSumValue = () => {
+    dispatch(resetToSumValue());
+  };
+
   return (
     <div className={styles.content}>
       <LabelInput
@@ -20,11 +55,11 @@ export const FilterSum = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={sumFilter.onResetFromSum}
+                onClick={handleResetFromSumValue}
               />
             }
-            value={sumFilter.valueFromSum}
-            onChange={sumFilter.onChangeFromSum}
+            value={getFromSumValue}
+            onChange={handleChangeFromSumValue}
           />
         }
       />
@@ -36,11 +71,11 @@ export const FilterSum = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={sumFilter.onResetToSum}
+            onClick={handleResetToSumValue}
           />
         }
-        value={sumFilter.valueToSum}
-        onChange={sumFilter.onChangeToSum}
+        value={getToSumValue}
+        onChange={handleChangeToSumValue}
       />
     </div>
   );

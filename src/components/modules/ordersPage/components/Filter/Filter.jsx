@@ -6,7 +6,6 @@ import { FilterSum } from "../FilterSum/FilterSum";
 import { FilterDate } from "../FilterDate/FilterDate";
 import { FilterStatus } from "../FilterStatus/FilterStatus";
 import { Icon } from "../../../../shared/Icon/Icon";
-/* import { FilterContext } from "../../../../context/FilterContext/FilterContext"; */
 import { Searchbar } from "../../../../shared/Searchbar/Searchbar";
 import {
   changeSearchValue,
@@ -15,7 +14,6 @@ import {
 } from "../../../../store/slices/filterSlice";
 
 export const Filter = () => {
-  /*   const { resetAllFilters } = useContext(FilterContext); */
   const dispatch = useDispatch();
 
   const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
