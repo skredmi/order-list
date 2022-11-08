@@ -1,0 +1,9 @@
+.tableFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  color: var(--main-color);
+  background-color: var(--secondary-color-light, var(--secondary-color-dark));
+}

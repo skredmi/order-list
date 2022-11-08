@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import filter from "../slices/filterSlice";
+import filters from "../slices/filters/filterSlice";
+import orders from "../slices/orders/orderSlice";
 
-const reducers = combineReducers({ filter });
+const reducers = combineReducers({ filters, orders });
 
 export default reducers;

@@ -1,8 +1,8 @@
 import styles from "./MainPage.module.css";
-import { Filter } from "../modules/ordersPage/components/Filter/Filter";
-import { Header } from "../modules/ordersPage/components/Header/Header";
+import { Filter } from "../modules/Filter/Filter";
+import { Header } from "../modules/Header/Header";
 import { FilterContextProvider } from "../context/FilterContext/FilterContext";
-import { Table } from "../modules/ordersPage/components/Table/Table";
+import { OrderTable } from "../modules/OrderTable/OrderTable";
 
 export const MainPage = () => (
   <div className={styles.page}>
@@ -10,6 +10,6 @@ export const MainPage = () => (
     <FilterContextProvider>
       <Filter />
     </FilterContextProvider>
-    <Table />
+    <OrderTable />
   </div>
 );

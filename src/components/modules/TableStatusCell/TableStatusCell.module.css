@@ -1,0 +1,46 @@
+.rowStatus {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 11rem;
+}
+
+.rowStatusCompleted {
+  color: var(--completed-icon-color);
+  opacity: 0.6;
+}
+
+.rowStatusCancelled {
+  color: var(--cancelled-icon-color);
+  opacity: 0.6;
+}
+
+.itemIconNew {
+  fill: var(--new-icon-color);
+  stroke: var(--new-icon-color);
+}
+
+.itemIconCalculation {
+  fill: var(--calculation-icon-color);
+  stroke: var(--calculation-icon-color);
+}
+
+.itemIconConfirmed {
+  fill: var(--confirmed-icon-color);
+  stroke: var(--confirmed-icon-color);
+  align-self: center;
+}
+
+.itemIconPostponed {
+  fill: var(--postponed-icon-color);
+  stroke: var(--postponed-icon-color);
+}
+
+.itemIconCompleted {
+  fill: var(--completed-icon-color);
+  stroke: var(--completed-icon-color);
+}
+
+.itemIconCancelled {
+  fill: var(--cancelled-icon-color);
+  stroke: var(--cancelled-icon-color);
+}
