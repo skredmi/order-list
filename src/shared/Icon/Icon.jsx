@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import styles from "./Icon.module.css";
-import { icons } from "../../../assets/icons/index";
+import { icons } from "../../assets/icons/index";
 
 export const Icon = ({ nameIcon, className }) => {
   const IconComponent = icons[nameIcon];

@@ -25,5 +25,5 @@
 .area:checked {
   background-color: var(--main-color);
   border: none;
-  background-image: url("../../../assets/icons/checkmark.svg");
+  background-image: url("../../assets/icons/checkmark.svg");
 }

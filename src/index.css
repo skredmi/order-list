@@ -34,6 +34,7 @@
   --main-background-color-dark: #2b2d33;
   --secondary-color-dark: #171b1f;
   --secondary-text-color-dark: #454e52;
+  --cancelled-icon-color-dark: #bcc4cc;
 }
 
 body {

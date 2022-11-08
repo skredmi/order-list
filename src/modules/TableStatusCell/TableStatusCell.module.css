@@ -1,17 +1,17 @@
 .rowStatus {
   display: flex;
   gap: 0.25rem;
-  min-width: 11rem;
+  width: 11rem;
 }
 
 .rowStatusCompleted {
   color: var(--completed-icon-color);
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .rowStatusCancelled {
-  color: var(--cancelled-icon-color);
-  opacity: 0.6;
+  color: var(--main-text-color-light, var(--cancelled-icon-color-dark));
+  opacity: 0.7;
 }
 
 .itemIconNew {
@@ -38,9 +38,11 @@
 .itemIconCompleted {
   fill: var(--completed-icon-color);
   stroke: var(--completed-icon-color);
+  opacity: 0.7;
 }
 
 .itemIconCancelled {
-  fill: var(--cancelled-icon-color);
-  stroke: var(--cancelled-icon-color);
+  fill: var(--main-text-color-light, var(--cancelled-icon-color-dark));
+  stroke: var(--main-text-color-light, var(--cancelled-icon-color-dark));
+  opacity: 0.7;
 }
