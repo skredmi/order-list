@@ -5,17 +5,9 @@ const initialState = {
   searchValue: "",
   fromDatevalue: "",
   toDateValue: "",
+  statusValue: [],
   fromSumValue: "",
   toSumValue: "",
-  /*   statusValue: {
-    new: false,
-    calculation: false,
-    confirmed: false,
-    postponed: false,
-    completed: false,
-    cancelled: false,
-  }, */
-  statusValue: [],
 };
 
 export const filterSlice = createSlice({
@@ -40,6 +32,11 @@ export const filterSlice = createSlice({
     resetToDateValue(state) {
       state.toDateValue = "";
     },
+    changeStatusValue(state, action) {
+      state.statusValue = state.statusValue.includes(action.payload)
+        ? state.statusValue.filter((item) => item !== action.payload)
+        : [...state.statusValue, action.payload];
+    },
     changeFromSumValue(state, action) {
       state.fromSumValue = action.payload.value;
     },
@@ -55,8 +52,7 @@ export const filterSlice = createSlice({
     resetAllValue(state) {
       state.fromDatevalue = "";
       state.toDateValue = "";
-      state.fromSumValue = "";
-      state.toSumValue = "";
+      state.statusValue = [];
       state.fromSumValue = "";
       state.toSumValue = "";
     },
