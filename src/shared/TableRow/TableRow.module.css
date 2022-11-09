@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 2.5rem;
+  border-bottom: 0.0625rem solid
+    var(--secondary-color-light, var(--secondary-color-dark));
+}

@@ -1,0 +1,56 @@
+.button {
+  height: 2rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1rem;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.colorPrimary {
+  background-color: var(--main-color);
+  color: var(--main-background-color-light, var(--main-background-color-dark));
+  outline-color: var(--secondary-color);
+}
+
+.colorTransparent {
+  background-color: transparent;
+  color: var(--main-color);
+  outline-color: var(--secondary-color);
+}
+
+.colorDark {
+  background-color: transparent;
+  color: var(--main-text-color);
+  outline-color: var(--secondary-color);
+}
+
+.colorWarning {
+  background-color: var(--incorrect-color);
+  color: var(--main-background-color);
+}
+
+.iconOnly {
+  padding: 0.5rem;
+}
+
+.sizeSmall {
+  height: 1.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+}
+
+.sizeSmall.iconOnly {
+  padding: 0;
+}
+
+.fullWidth {
+  width: 100%;
+}

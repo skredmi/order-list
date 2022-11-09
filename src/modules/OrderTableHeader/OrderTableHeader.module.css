@@ -1,0 +1,28 @@
+.tableHeaderCheckbox {
+  padding: 0.75rem 0.5rem;
+  line-height: 0;
+}
+
+.tableHeaderNumberOrder {
+  width: 6.75rem;
+}
+
+.tableHeaderDate {
+  width: 11rem;
+}
+
+.tableHeaderStatus {
+  width: 11rem;
+}
+
+.tableHeaderCount {
+  width: 6rem;
+}
+
+.tableHeaderSum {
+  width: 8rem;
+}
+
+.tableHeaderConsumer {
+  width: 21.75rem;
+}
