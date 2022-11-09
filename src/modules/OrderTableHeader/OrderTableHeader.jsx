@@ -5,9 +5,9 @@ import { TableHeaderCell } from "../../shared/TableHeaderCell/TableHeaderCell";
 
 export const OrderTableHeader = () => (
   <TableHeader>
-    <div className={styles.tableHeaderCheckbox}>
+    <TableHeaderCell className={styles.tableHeaderCheckbox}>
       <Checkbox />
-    </div>
+    </TableHeaderCell>
     <TableHeaderCell className={styles.tableHeaderNumberOrder}>
       #
     </TableHeaderCell>
