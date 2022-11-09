@@ -8,9 +8,9 @@ export const OrderTableRow = ({
   item: { date, status, count, name, numberOrder, sum },
 }) => (
   <TableRow>
-    <div className={styles.rowCheckbox}>
+    <TableCell className={styles.rowCheckbox}>
       <Checkbox />
-    </div>
+    </TableCell>
     <TableCell className={styles.rowNumberOrder}> {numberOrder} </TableCell>
     <TableCell className={styles.rowDate}> {date} </TableCell>
     <TableStatusCell status={status} />
