@@ -80,7 +80,9 @@ export const Filter = () => {
             <FilterDate />
             <FilterStatus />
             <FilterSum />
-            <Button theme="transparent">Применить</Button>
+            <Button theme="transparent" onClick={handleOpenFiltersContainer}>
+              Применить
+            </Button>
           </div>
         </section>
       )}
