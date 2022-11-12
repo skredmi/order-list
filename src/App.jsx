@@ -1,5 +1,5 @@
-import { ThemeProvider } from "./components/modules/ordersPage/components/ThemeContext/ThemeContext";
-import { MainPage } from "./components/pages/MainPage";
+import { ThemeProvider } from "./modules/ThemeContext/ThemeContext";
+import { MainPage } from "./pages/MainPage";
 
 export const App = () => (
   <ThemeProvider>

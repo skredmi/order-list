@@ -1,0 +1,17 @@
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  box-sizing: border-box;
+  padding: 0.75rem 0.5rem;
+}
+
+.cellActive {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.cellIcon {
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+}

@@ -1,0 +1,23 @@
+.rowCheckbox {
+  line-height: 0;
+}
+
+.rowNumberOrder {
+  width: 6.75rem;
+}
+
+.rowDate {
+  width: 11rem;
+}
+
+.rowCount {
+  width: 6rem;
+}
+
+.rowSum {
+  width: 8rem;
+}
+
+.rowConsumer {
+  width: 21.75rem;
+}

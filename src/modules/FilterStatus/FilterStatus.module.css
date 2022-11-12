@@ -1,0 +1,16 @@
+.content {
+  width: 12rem;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 3.75rem;
+  left: 2rem;
+  z-index: 1;
+}
+
+.iconDropdown {
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+}
