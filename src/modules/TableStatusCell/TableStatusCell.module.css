@@ -2,8 +2,6 @@
   display: flex;
   gap: 0.25rem;
   width: 11rem;
-  box-sizing: border-box;
-  padding: 0.75rem 0.5rem;
 }
 
 .rowStatusCompleted {

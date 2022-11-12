@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import styles from "./TableStatusCell.module.css";
 import { Icon } from "../../shared/Icon/Icon";
+import { TableCell } from "../../shared/TableCell/TableCell";
 
 const STATUS_MAP = {
   Новый: {
@@ -60,9 +61,9 @@ export const TableStatusCell = ({ status }) => {
   });
 
   return (
-    <div className={blockStatusClass}>
+    <TableCell className={blockStatusClass}>
       <Icon nameIcon={STATUS_MAP[status].iconName} className={blockIconClass} />
       {STATUS_MAP[status].status}
-    </div>
+    </TableCell>
   );
 };
