@@ -1,7 +1,9 @@
 .page {
   display: flex;
+  height: 100vh;
   flex-direction: column;
   padding: 2rem 3rem 0 3rem;
+  box-sizing: border-box;
   background-color: var(
     --main-background-color-light,
     var(--main-background-color-dark)
