@@ -1,50 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilterSum.module.css";
 import { Input } from "../../shared/Input/Input";
 import { Button } from "../../shared/Button/Button";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import {
-  changeFromSumValue,
-  resetFromSumValue,
-  changeToSumValue,
-  resetToSumValue,
-} from "../../store/slices/filters/filterSlice";
-import {
-  getFromSumValue,
-  getToSumValue,
-} from "../../store/slices/filters/filterSelector";
 
-export const FilterSum = () => {
-  const dispatch = useDispatch();
-
-  const fromSumValue = useSelector(getFromSumValue);
-  const toSumValue = useSelector(getToSumValue);
-
-  const handleChangeFromSumValue = (event) => {
-    dispatch(
-      changeFromSumValue({
-        type: "changeFromSumValue",
-        value: event.target.value,
-      })
-    );
-  };
-
-  const handleChangeToSumValue = (event) => {
-    dispatch(
-      changeToSumValue({
-        type: "changeToSumValue",
-        value: event.target.value,
-      })
-    );
-  };
-
-  const handleResetFromSumValue = () => {
-    dispatch(resetFromSumValue());
-  };
-
-  const handleResetToSumValue = () => {
-    dispatch(resetToSumValue());
-  };
+export const FilterSum = ({ onChange, onReset, value }) => {
+  const handleOnReset = (key) => () => onReset(key);
+  const handleOnChange = (key, event) => onChange(key)(event);
 
   return (
     <div className={styles.content}>
@@ -59,11 +20,11 @@ export const FilterSum = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={handleResetFromSumValue}
+                onClick={handleOnReset("fromSum")}
               />
             }
-            value={fromSumValue}
-            onChange={handleChangeFromSumValue}
+            value={value("fromSum")}
+            onChange={(event) => handleOnChange("fromSum", event)}
           />
         }
       />
@@ -75,11 +36,11 @@ export const FilterSum = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={handleResetToSumValue}
+            onClick={handleOnReset("toSum")}
           />
         }
-        value={toSumValue}
-        onChange={handleChangeToSumValue}
+        value={value("toSum")}
+        onChange={(event) => handleOnChange("toSum", event)}
       />
     </div>
   );

@@ -1,50 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilterDate.module.css";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
 import { Input } from "../../shared/Input/Input";
 import { Button } from "../../shared/Button/Button";
-import {
-  changeFromDateValue,
-  resetFromDateValue,
-  changeToDateValue,
-  resetToDateValue,
-} from "../../store/slices/filters/filterSlice";
-import {
-  getFromDateValue,
-  getToDateValue,
-} from "../../store/slices/filters/filterSelector";
 
-export const FilterDate = () => {
-  const dispatch = useDispatch();
-
-  const fromDateValue = useSelector(getFromDateValue);
-  const toDateValue = useSelector(getToDateValue);
-
-  const handleChangeFromDate = (event) => {
-    dispatch(
-      changeFromDateValue({
-        type: "changeFromDateValue",
-        value: event.target.value,
-      })
-    );
-  };
-
-  const handleChangeToDate = (event) => {
-    dispatch(
-      changeToDateValue({
-        type: "changeToDateValue",
-        value: event.target.value,
-      })
-    );
-  };
-
-  const handleResetFromDate = () => {
-    dispatch(resetFromDateValue());
-  };
-
-  const handleResetToDate = () => {
-    dispatch(resetToDateValue());
-  };
+export const FilterDate = ({ onChange, onReset, value }) => {
+  const handleOnReset = (key) => () => onReset(key);
+  const handleOnChange = (key, event) => onChange(key)(event);
 
   return (
     <div className={styles.content}>
@@ -59,11 +20,11 @@ export const FilterDate = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={handleResetFromDate}
+                onClick={handleOnReset("fromDate")}
               />
             }
-            value={fromDateValue}
-            onChange={handleChangeFromDate}
+            value={value("fromDate")}
+            onChange={(event) => handleOnChange("fromDate", event)}
             className={styles.datePrefix}
           />
         }
@@ -76,11 +37,11 @@ export const FilterDate = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={handleResetToDate}
+            onClick={handleOnReset("toDate")}
           />
         }
-        value={toDateValue}
-        onChange={handleChangeToDate}
+        value={value("toDate")}
+        onChange={(event) => handleOnChange("toDate", event)}
       />
     </div>
   );

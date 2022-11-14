@@ -1,17 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { orders } from "./orders";
+import { mock } from "../../../mock/mock";
 
-const initialState = orders;
+const initialState = mock;
 
 export const ordersSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {
-    getOders(state, action) {
-      return [...state, action.payload];
-    },
-  },
+  reducers: {},
 });
 
-export const { getOders } = ordersSlice.actions;
 export default ordersSlice.reducer;

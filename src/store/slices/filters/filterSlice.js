@@ -1,76 +1,52 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  searchValue: "",
-  fromDatevalue: "",
-  toDateValue: "",
-  statusValue: [],
-  fromSumValue: "",
-  toSumValue: "",
+export const initialState = {
+  search: "",
+  fromDate: "",
+  toDate: "",
+  status: [],
+  fromSum: "",
+  toSum: "",
+  sortCell: "date",
+  isSortAscending: true,
+  page: 1,
 };
 
 export const filterSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
-    changeSearchValue(state, action) {
-      state.searchValue = action.payload.value;
+    setSearchFilter(state, action) {
+      state.search = action.payload;
     },
-    resetSearchValue(state) {
-      state.searchValue = "";
+    setFilter(state, { payload }) {
+      state.fromDate = payload.fromDate;
+      state.toDate = payload.toDate;
+      state.status = payload.status;
+      state.fromSum = payload.fromSum;
+      state.toSum = payload.toSum;
     },
-    changeFromDateValue(state, action) {
-      state.fromDatevalue = action.payload.value;
+    resetFilters() {
+      return initialState;
     },
-    resetFromDateValue(state) {
-      state.fromDatevalue = "";
+    setSortCell(state, action) {
+      state.sortCell = action.payload;
     },
-    changeToDateValue(state, action) {
-      state.toDateValue = action.payload.value;
+    setSortDirection(state, action) {
+      state.isSortAscending = action.payload;
     },
-    resetToDateValue(state) {
-      state.toDateValue = "";
-    },
-    changeStatusValue(state, action) {
-      state.statusValue = state.statusValue.includes(action.payload)
-        ? state.statusValue.filter((item) => item !== action.payload)
-        : [...state.statusValue, action.payload];
-    },
-    changeFromSumValue(state, action) {
-      state.fromSumValue = action.payload.value;
-    },
-    resetFromSumValue(state) {
-      state.fromSumValue = "";
-    },
-    changeToSumValue(state, action) {
-      state.toSumValue = action.payload.value;
-    },
-    resetToSumValue(state) {
-      state.toSumValue = "";
-    },
-    resetAllValue(state) {
-      state.fromDatevalue = "";
-      state.toDateValue = "";
-      state.statusValue = [];
-      state.fromSumValue = "";
-      state.toSumValue = "";
+    setCurrentPage(state, action) {
+      state.page = action.payload;
     },
   },
 });
 
 export const {
-  changeSearchValue,
-  resetSearchValue,
-  changeFromDateValue,
-  resetFromDateValue,
-  changeToDateValue,
-  resetToDateValue,
-  changeStatusValue,
-  changeFromSumValue,
-  resetFromSumValue,
-  changeToSumValue,
-  resetToSumValue,
-  resetAllValue,
+  setSearchFilter,
+  setFilter,
+  resetFilters,
+  setSortCell,
+  setSortDirection,
+  setCurrentPage,
 } = filterSlice.actions;
 export default filterSlice.reducer;

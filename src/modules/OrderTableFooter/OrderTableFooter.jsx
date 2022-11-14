@@ -6,12 +6,11 @@ import { Dropdown } from "../../shared/Dropdown/Dropdown";
 import { LabelControl } from "../../shared/LabelControl/LabelControl";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
 import { Radio } from "../../shared/Radio/Radio";
-import { Input } from "../../shared/Input/Input";
+import { OrderTablePagination } from "../OrderTablePagination/OrderTablePagination";
 
 export const OrderTableFooter = () => {
   const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);
   const [isOpenDeleteDropdown, setIsOpenDeleteDropdow] = useState(false);
-  const [isOpenPageDropdown, setIsOpenPageDropdown] = useState(false);
 
   const handlOpenDropdownStatusClick = () => {
     setIsOpenDropdownStatus(!isOpenDropdownStatus);
@@ -19,10 +18,6 @@ export const OrderTableFooter = () => {
 
   const handlOpenDeleteDropdownClick = () => {
     setIsOpenDeleteDropdow(!isOpenDeleteDropdown);
-  };
-
-  const handlOpenPageDropdownClick = () => {
-    setIsOpenPageDropdown(!isOpenPageDropdown);
   };
 
   return (
@@ -93,41 +88,7 @@ export const OrderTableFooter = () => {
           </Dropdown>
         )}
       </div>
-      <div className={styles.tableFooterPages}>
-        <Button theme="primary" size="small">
-          1
-        </Button>
-        <Button theme="transparent" size="small">
-          2
-        </Button>
-        <Button theme="transparent" size="small">
-          3
-        </Button>
-        <div>...</div>
-        <Button theme="transparent" size="small">
-          18
-        </Button>
-        <Button
-          theme="transparent"
-          size="small"
-          onClick={handlOpenPageDropdownClick}
-        >
-          #
-        </Button>
-        {isOpenPageDropdown && (
-          <Dropdown className={styles.tableFooterPageDropdown}>
-            <LabelInput
-              control={
-                <Input
-                  placeholder="Введите номер"
-                  className={styles.fieldPageDropdown}
-                />
-              }
-              label="Номер страницы"
-            />
-          </Dropdown>
-        )}
-      </div>
+      <OrderTablePagination />
     </TableFooter>
   );
 };

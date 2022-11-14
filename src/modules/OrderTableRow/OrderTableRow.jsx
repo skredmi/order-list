@@ -14,11 +14,9 @@ export const OrderTableRow = ({
     <TableCell className={styles.rowNumberOrder}> {numberOrder} </TableCell>
     <TableCell className={styles.rowDate}> {date} </TableCell>
     <TableStatusCell status={status} />
-    <TableCell className={styles.rowCount}>
-      {status === "Отменен" ? "-" : count}
-    </TableCell>
+    <TableCell className={styles.rowCount}>{count}</TableCell>
     <TableCell className={styles.rowSum}>
-      {status === "Отменен" ? "-" : `${sum.toLocaleString("ru-RU")} ₽ `}
+      {`${sum.toLocaleString("ru-RU")} ₽ `}
     </TableCell>
     <TableCell className={styles.rowConsumer}> {name}</TableCell>
   </TableRow>

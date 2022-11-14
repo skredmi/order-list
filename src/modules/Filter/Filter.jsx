@@ -8,37 +8,48 @@ import { FilterStatus } from "../FilterStatus/FilterStatus";
 import { Icon } from "../../shared/Icon/Icon";
 import { Searchbar } from "../../shared/Searchbar/Searchbar";
 import {
-  changeSearchValue,
-  resetSearchValue,
-  resetAllValue,
+  setSearchFilter,
+  setFilter,
+  resetFilters,
+  initialState,
 } from "../../store/slices/filters/filterSlice";
 import { getSearchValue } from "../../store/slices/filters/filterSelector";
 
 export const Filter = () => {
-  const dispatch = useDispatch();
-
   const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
 
   const handleOpenFiltersContainer = () => {
     setIsOpenFiltersContainer(!isOpenFiltersContainer);
   };
-
   const searchValue = useSelector(getSearchValue);
-  const handleChange = (event) => {
-    dispatch(
-      changeSearchValue({
-        type: "changeSearchValue",
-        value: event.target.value,
-      })
-    );
+  const dispatch = useDispatch();
+  const [filtersValue, setFiltersValue] = useState({ ...initialState });
+
+  const handleChangeSearchFilterValue = (event) => {
+    dispatch(setSearchFilter(event.target.value));
   };
 
-  const handleReset = () => {
-    dispatch(resetSearchValue());
+  const handleResetSearchFilter = () => {
+    dispatch(setSearchFilter(""));
   };
 
-  const handleResetAllValue = () => {
-    dispatch(resetAllValue());
+  const handleChangeFiltersValue = (key) => (event) => {
+    setFiltersValue({ ...filtersValue, [key]: event.target.value });
+  };
+
+  const handleResetFiltersValue = (key) => {
+    setFiltersValue({ ...filtersValue, [key]: "" });
+  };
+
+  const getFiltersValue = (key) => filtersValue[key];
+
+  const handleResetAllFilters = () => {
+    setFiltersValue({ ...initialState });
+    dispatch(resetFilters());
+  };
+
+  const handleSetFiltersClick = () => {
+    dispatch(setFilter(filtersValue));
   };
 
   return (
@@ -48,8 +59,8 @@ export const Filter = () => {
           <Searchbar
             placeholder="Номер заказа или ФИО"
             value={searchValue}
-            onChange={handleChange}
-            onReset={handleReset}
+            onChange={handleChangeSearchFilterValue}
+            onReset={handleResetSearchFilter}
           />
           <Button
             theme={isOpenFiltersContainer ? "primary" : "transparent"}
@@ -64,7 +75,7 @@ export const Filter = () => {
             Фильтры
           </Button>
           {isOpenFiltersContainer && (
-            <Button theme="transparent" onClick={handleResetAllValue}>
+            <Button theme="transparent" onClick={handleResetAllFilters}>
               Сбросить фильтры
             </Button>
           )}
@@ -77,10 +88,18 @@ export const Filter = () => {
       {isOpenFiltersContainer && (
         <section className={styles.dropdown}>
           <div className={styles.dropdownItem}>
-            <FilterDate />
-            <FilterStatus />
-            <FilterSum />
-            <Button theme="transparent" onClick={handleOpenFiltersContainer}>
+            <FilterDate
+              onChange={handleChangeFiltersValue}
+              onReset={handleResetFiltersValue}
+              value={getFiltersValue}
+            />
+            <FilterStatus state={[filtersValue, setFiltersValue]} />
+            <FilterSum
+              onChange={handleChangeFiltersValue}
+              onReset={handleResetFiltersValue}
+              value={getFiltersValue}
+            />
+            <Button theme="transparent" onClick={handleSetFiltersClick}>
               Применить
             </Button>
           </div>
