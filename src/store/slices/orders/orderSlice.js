@@ -12,7 +12,11 @@ export const ordersSlice = createSlice({
     removeOrder(state, { payload }) {
       state.mock = state.mock.filter((i) => i.id !== payload.id);
     },
+    changeOrder(state, { payload: { id, key, value } }) {
+      const order = state.mock.find((i) => i.id === id);
+      order[key] = value;
+    },
   },
 });
-export const { removeOrder } = ordersSlice.actions;
+export const { removeOrder, changeOrder } = ordersSlice.actions;
 export default ordersSlice.reducer;

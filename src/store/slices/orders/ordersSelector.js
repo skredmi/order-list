@@ -11,6 +11,7 @@ import {
   getSortDirection,
   getPage,
 } from "../filters/filterSelector";
+import { PAGE_SIZE as pageSize } from "../../../constants/constants";
 
 export const getOrdersData = (state) => state.orders.mock;
 
@@ -103,13 +104,11 @@ export const getSortedOrders = (state) => {
   );
 };
 
-export const PAGE_SIZE = 20;
-
 export const getPaginetedOrders = createSelector(
   [getSortedOrders, getPage],
   (sortedOrders, page) => {
-    const start = PAGE_SIZE * (page - 1);
-    const end = start + PAGE_SIZE;
+    const start = pageSize * (page - 1);
+    const end = start + pageSize;
     return sortedOrders.slice(start, end);
   }
 );

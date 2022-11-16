@@ -15,6 +15,7 @@ import {
   resetSelectedOrders,
 } from "../../store/slices/filters/filterSlice";
 import { getSearchValue } from "../../store/slices/filters/filterSelector";
+import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
 
 export const Filter = () => {
   const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
@@ -66,7 +67,11 @@ export const Filter = () => {
             onReset={handleResetSearchFilter}
           />
           <Button
-            theme={isOpenFiltersContainer ? "primary" : "transparent"}
+            theme={
+              isOpenFiltersContainer
+                ? buttonThemeTypes.primary
+                : buttonThemeTypes.transparent
+            }
             nameIcon="filter"
             className={
               isOpenFiltersContainer
@@ -78,7 +83,10 @@ export const Filter = () => {
             Фильтры
           </Button>
           {isOpenFiltersContainer && (
-            <Button theme="transparent" onClick={handleResetAllFilters}>
+            <Button
+              theme={buttonThemeTypes.transparent}
+              onClick={handleResetAllFilters}
+            >
               Сбросить фильтры
             </Button>
           )}
@@ -102,7 +110,10 @@ export const Filter = () => {
               onReset={handleResetFiltersValue}
               value={getFiltersValue}
             />
-            <Button theme="transparent" onClick={handleSetFiltersClick}>
+            <Button
+              theme={buttonThemeTypes.transparent}
+              onClick={handleSetFiltersClick}
+            >
               Применить
             </Button>
           </div>

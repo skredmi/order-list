@@ -1,17 +1,10 @@
 import classnames from "classnames";
 import styles from "./Button.module.css";
 import { Icon } from "../Icon/Icon";
-
-const ButtonThemeTypes = {
-  primary: "primary",
-  transparent: "transparent",
-  dark: "dark",
-  warning: "warning",
-};
-
-const ButtonSizeTypes = {
-  small: "small",
-};
+import {
+  BUTTON_THEME as buttonThemeTypes,
+  BUTTON_SIZE as buttonSizeTypes,
+} from "../../constants/constants";
 
 export const Button = ({
   children,
@@ -25,13 +18,13 @@ export const Button = ({
   ...props
 }) => {
   const blockClass = classnames(styles.button, className, {
-    [styles.colorPrimary]: theme === ButtonThemeTypes.primary,
-    [styles.colorTransparent]: theme === ButtonThemeTypes.transparent,
-    [styles.colorDark]: theme === ButtonThemeTypes.dark,
-    [styles.colorWarning]: theme === ButtonThemeTypes.warning,
+    [styles.colorPrimary]: theme === buttonThemeTypes.primary,
+    [styles.colorTransparent]: theme === buttonThemeTypes.transparent,
+    [styles.colorDark]: theme === buttonThemeTypes.dark,
+    [styles.colorWarning]: theme === buttonThemeTypes.warning,
     [styles.iconOnly]: !children && nameIcon,
     [styles.fullWidth]: isFullWidth,
-    [styles.sizeSmall]: size === ButtonSizeTypes.small,
+    [styles.sizeSmall]: size === buttonSizeTypes.small,
   });
   return (
     // eslint-disable-next-line react/button-has-type, react/jsx-props-no-spreading

@@ -9,8 +9,13 @@ import { LabelInput } from "../../shared/LabelInput/LabelInput";
 import { Radio } from "../../shared/Radio/Radio";
 import { OrderTablePagination } from "../OrderTablePagination/OrderTablePagination";
 import { getSelectedOrders } from "../../store/slices/filters/filterSelector";
-import { removeOrder } from "../../store/slices/orders/orderSlice";
+import { removeOrder, changeOrder } from "../../store/slices/orders/orderSlice";
 import { resetSelectedOrders } from "../../store/slices/filters/filterSlice";
+import {
+  FILTER_STATUSES as statuses,
+  BUTTON_THEME as buttonThemeTypes,
+  BUTTON_SIZE as buttonSizeTypes,
+} from "../../constants/constants";
 
 export const OrderTableFooter = () => {
   const dispatch = useDispatch();
@@ -36,6 +41,24 @@ export const OrderTableFooter = () => {
     setIsOpenDeleteDropdow(!isOpenDeleteDropdown);
   };
 
+  const handleChangeOrderStatus = (status) => {
+    selectedOrders.forEach((id) => {
+      dispatch(changeOrder({ id, key: "status", value: status }));
+    });
+    dispatch(resetSelectedOrders());
+    setIsOpenDropdownStatus(!isOpenDropdownStatus);
+  };
+
+  const selectedOrderText = (number) => {
+    if (number >= 5) {
+      return "записей";
+    }
+    if (number > 1 && number < 5) {
+      return "записи";
+    }
+    return "запись";
+  };
+
   return (
     <TableFooter>
       <div className={styles.tableFooterItems}>
@@ -43,18 +66,18 @@ export const OrderTableFooter = () => {
         {selectedOrders.length > 0 && (
           <>
             <Button
-              theme="primary"
+              theme={buttonThemeTypes.primary}
               nameIcon="pencil"
-              size="small"
+              size={buttonSizeTypes.small}
               className={styles.tableFooterButton}
               onClick={handlOpenDropdownStatusClick}
             >
               Изменить статус
             </Button>
             <Button
-              theme="warning"
+              theme={buttonThemeTypes.warning}
               nameIcon="bin"
-              size="small"
+              size={buttonSizeTypes.small}
               className={styles.tableFooterButtonDelete}
               onClick={handlOpenDeleteDropdownClick}
             >
@@ -64,30 +87,19 @@ export const OrderTableFooter = () => {
         )}
         {isOpenDropdownStatus && (
           <Dropdown className={styles.tableFooterDropdown}>
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Новый"
-            />
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Рассчет"
-            />
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Подтвержден"
-            />
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Отложен"
-            />
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Выполнен"
-            />
-            <LabelControl
-              control={<Radio className={styles.radioDropdown} />}
-              label="Отменен"
-            />
+            {Object.keys(statuses).map((key) => (
+              <LabelControl
+                key={key}
+                control={
+                  <Radio
+                    className={styles.radioDropdown}
+                    value={key}
+                    onChange={() => handleChangeOrderStatus(key)}
+                  />
+                }
+                label={statuses[key]}
+              />
+            ))}
           </Dropdown>
         )}
         {isOpenDeleteDropdown && (
@@ -96,19 +108,25 @@ export const OrderTableFooter = () => {
               control={
                 <>
                   <Button
-                    theme="transparent"
-                    size="small"
+                    theme={buttonThemeTypes.transparent}
+                    size={buttonSizeTypes.small}
                     isFullWidth
                     onClick={handleRemoveSelectedOrderClick}
                   >
                     Удалить
                   </Button>
-                  <Button theme="primary" size="small" isFullWidth>
+                  <Button
+                    theme={buttonThemeTypes.primary}
+                    size={buttonSizeTypes.small}
+                    isFullWidth
+                  >
                     Отмена
                   </Button>
                 </>
               }
-              label={`Удалить ${selectedOrders.length} записей?`}
+              label={`Удалить ${selectedOrders.length} ${selectedOrderText(
+                selectedOrders.length
+              )}?`}
             />
           </Dropdown>
         )}
