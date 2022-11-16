@@ -5,11 +5,13 @@ import { TableStatusCell } from "../TableStatusCell/TableStatusCell";
 import { TableRow } from "../../shared/TableRow/TableRow";
 
 export const OrderTableRow = ({
-  item: { date, status, count, name, numberOrder, sum },
+  item: { date, status, count, name, numberOrder, sum, id },
+  onChange,
+  checked,
 }) => (
   <TableRow>
     <TableCell className={styles.rowCheckbox}>
-      <Checkbox />
+      <Checkbox onChange={onChange} checked={checked} id={id} />
     </TableCell>
     <TableCell className={styles.rowNumberOrder}> {numberOrder} </TableCell>
     <TableCell className={styles.rowDate}> {date} </TableCell>

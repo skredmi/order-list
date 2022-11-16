@@ -10,7 +10,10 @@ import {
   getSortedOrders,
   PAGE_SIZE as pageSize,
 } from "../../store/slices/orders/ordersSelector";
-import { setCurrentPage } from "../../store/slices/filters/filterSlice";
+import {
+  resetSelectedOrders,
+  setCurrentPage,
+} from "../../store/slices/filters/filterSlice";
 
 export const OrderTablePagination = () => {
   const [isOpenPageDropdown, setIsOpenPageDropdown] = useState(false);
@@ -19,6 +22,7 @@ export const OrderTablePagination = () => {
   };
   const dispatch = useDispatch();
   const handleSetPageClick = (page) => {
+    dispatch(resetSelectedOrders());
     dispatch(setCurrentPage(page));
   };
   const sortedOrders = useSelector(getSortedOrders);

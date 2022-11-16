@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classnames from "classnames";
 import styles from "./TableHeaderCell.module.css";
 import { Icon } from "../Icon/Icon";
@@ -21,7 +19,13 @@ export const TableHeaderCell = ({
   });
 
   return (
-    <div className={blockClass} onClick={onClick}>
+    <div
+      className={blockClass}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-hidden="true"
+    >
       {children}
       {hasIcon && <Icon nameIcon="vArrow" className={iconClass} />}
     </div>

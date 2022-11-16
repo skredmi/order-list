@@ -12,6 +12,7 @@ import {
   setFilter,
   resetFilters,
   initialState,
+  resetSelectedOrders,
 } from "../../store/slices/filters/filterSlice";
 import { getSearchValue } from "../../store/slices/filters/filterSelector";
 
@@ -26,6 +27,7 @@ export const Filter = () => {
   const [filtersValue, setFiltersValue] = useState({ ...initialState });
 
   const handleChangeSearchFilterValue = (event) => {
+    dispatch(resetSelectedOrders());
     dispatch(setSearchFilter(event.target.value));
   };
 
@@ -50,6 +52,7 @@ export const Filter = () => {
 
   const handleSetFiltersClick = () => {
     dispatch(setFilter(filtersValue));
+    dispatch(resetSelectedOrders());
   };
 
   return (

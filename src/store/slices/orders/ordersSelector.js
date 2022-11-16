@@ -12,7 +12,7 @@ import {
   getPage,
 } from "../filters/filterSelector";
 
-export const getOrdersData = (state) => state.orders;
+export const getOrdersData = (state) => state.orders.mock;
 
 const isDateInRange = (dateFrom, dateTo) => (date) => {
   if (!dateFrom && !dateTo) {

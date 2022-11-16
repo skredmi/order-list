@@ -7,3 +7,4 @@ export const getToSumValue = (state) => state.filters.toSum;
 export const getSortCell = (state) => state.filters.sortCell;
 export const getSortDirection = (state) => state.filters.isSortAscending;
 export const getPage = (state) => state.filters.page;
+export const getSelectedOrders = (state) => state.filters.selectedOrders;
