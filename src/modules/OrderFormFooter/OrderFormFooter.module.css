@@ -1,0 +1,20 @@
+.footer {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--secondary-color-light, var(--secondary-color-dark));
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+}
+
+.footerError {
+  color: var(--incorrect-color);
+}
+
+.footerIcon {
+  fill: var(--main-background-color-light, var(--main-background-color-dark));
+  stroke: var(--main-background-color-light, var(--main-background-color-dark));
+}

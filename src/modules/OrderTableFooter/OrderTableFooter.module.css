@@ -1,3 +1,9 @@
+.tableFooter {
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-color);
+}
+
 .tableFooterItems {
   display: flex;
   align-items: center;

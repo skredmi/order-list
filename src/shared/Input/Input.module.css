@@ -54,3 +54,9 @@
 .inputPrefix {
   padding-left: 1.5rem;
 }
+
+.iconLocked {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}

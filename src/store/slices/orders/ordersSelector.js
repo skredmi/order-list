@@ -10,6 +10,7 @@ import {
   getSortCell,
   getSortDirection,
   getPage,
+  getSelectedOrders,
 } from "../filters/filterSelector";
 import { PAGE_SIZE as pageSize } from "../../../constants/constants";
 
@@ -46,7 +47,7 @@ const isItemInArray = (array) => (item) => {
   return array.includes(item);
 };
 
-const parseDate = (date) => {
+export const parseDate = (date) => {
   if (!date) return null;
   const [d, m, y] = date.slice(0, 10).split(".");
   return Date.parse(`${y}-${m}-${d}`);
@@ -112,3 +113,9 @@ export const getPaginetedOrders = createSelector(
     return sortedOrders.slice(start, end);
   }
 );
+
+export const getSelectedIdOrders = (state) => {
+  const orders = [...getOrdersData(state)];
+  const selectedOrderIds = getSelectedOrders(state);
+  return orders.filter((order) => selectedOrderIds.includes(order.id));
+};

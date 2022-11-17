@@ -68,3 +68,5 @@ export const BUTTON_SIZE = {
 };
 
 export const PAGE_SIZE = 20;
+
+export const CODE_FORM = 123;

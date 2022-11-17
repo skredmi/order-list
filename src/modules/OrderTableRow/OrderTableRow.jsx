@@ -8,8 +8,9 @@ export const OrderTableRow = ({
   item: { date, status, count, name, numberOrder, sum, id },
   onChange,
   checked,
+  onClick,
 }) => (
-  <TableRow>
+  <TableRow onClick={onClick} checked={checked} className={styles.row}>
     <TableCell className={styles.rowCheckbox}>
       <Checkbox onChange={onChange} checked={checked} id={id} />
     </TableCell>

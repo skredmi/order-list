@@ -60,7 +60,7 @@ export const OrderTableFooter = () => {
   };
 
   return (
-    <TableFooter>
+    <TableFooter className={styles.tableFooter}>
       <div className={styles.tableFooterItems}>
         <div>Выбрано записей: {selectedOrders.length}</div>
         {selectedOrders.length > 0 && (
