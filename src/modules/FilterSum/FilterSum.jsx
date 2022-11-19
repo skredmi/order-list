@@ -1,12 +1,12 @@
-import { useContext } from "react";
 import styles from "./FilterSum.module.css";
 import { Input } from "../../shared/Input/Input";
 import { Button } from "../../shared/Button/Button";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { FilterContext } from "../../context/FilterContext/FilterContext";
 
-export const FilterSum = () => {
-  const { sumFilter } = useContext(FilterContext);
+export const FilterSum = ({ onChange, onReset, value }) => {
+  const handleOnReset = (key) => () => onReset(key);
+  const handleOnChange = (key, event) => onChange(key)(event);
+
   return (
     <div className={styles.content}>
       <LabelInput
@@ -20,11 +20,11 @@ export const FilterSum = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={sumFilter.onResetFromSum}
+                onClick={handleOnReset("fromSum")}
               />
             }
-            value={sumFilter.valueFromSum}
-            onChange={sumFilter.onChangeFromSum}
+            value={value("fromSum")}
+            onChange={(event) => handleOnChange("fromSum", event)}
           />
         }
       />
@@ -36,11 +36,11 @@ export const FilterSum = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={sumFilter.onResetToSum}
+            onClick={handleOnReset("toSum")}
           />
         }
-        value={sumFilter.valueToSum}
-        onChange={sumFilter.onChangeToSum}
+        value={value("toSum")}
+        onChange={(event) => handleOnChange("toSum", event)}
       />
     </div>
   );

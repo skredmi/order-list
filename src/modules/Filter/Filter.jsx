@@ -1,19 +1,55 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Filter.module.css";
 import { Button } from "../../shared/Button/Button";
 import { FilterSum } from "../FilterSum/FilterSum";
 import { FilterDate } from "../FilterDate/FilterDate";
 import { FilterStatus } from "../FilterStatus/FilterStatus";
 import { Icon } from "../../shared/Icon/Icon";
-import { FilterContext } from "../../context/FilterContext/FilterContext";
 import { Searchbar } from "../../shared/Searchbar/Searchbar";
+import {
+  setSearchFilter,
+  setFilter,
+  resetFilters,
+  initialState,
+} from "../../store/slices/filters/filterSlice";
+import { getSearchValue } from "../../store/slices/filters/filterSelector";
 
 export const Filter = () => {
-  const { searchInput, resetAllFilters } = useContext(FilterContext);
   const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
 
   const handleOpenFiltersContainer = () => {
     setIsOpenFiltersContainer(!isOpenFiltersContainer);
+  };
+  const searchValue = useSelector(getSearchValue);
+  const dispatch = useDispatch();
+  const [filtersValue, setFiltersValue] = useState({ ...initialState });
+
+  const handleChangeSearchFilterValue = (event) => {
+    dispatch(setSearchFilter(event.target.value));
+  };
+
+  const handleResetSearchFilter = () => {
+    dispatch(setSearchFilter(""));
+  };
+
+  const handleChangeFiltersValue = (key) => (event) => {
+    setFiltersValue({ ...filtersValue, [key]: event.target.value });
+  };
+
+  const handleResetFiltersValue = (key) => {
+    setFiltersValue({ ...filtersValue, [key]: "" });
+  };
+
+  const getFiltersValue = (key) => filtersValue[key];
+
+  const handleResetAllFilters = () => {
+    setFiltersValue({ ...initialState });
+    dispatch(resetFilters());
+  };
+
+  const handleSetFiltersClick = () => {
+    dispatch(setFilter(filtersValue));
   };
 
   return (
@@ -22,9 +58,9 @@ export const Filter = () => {
         <div className={styles.item}>
           <Searchbar
             placeholder="Номер заказа или ФИО"
-            value={searchInput.value}
-            onChange={searchInput.onChange}
-            onReset={searchInput.onReset}
+            value={searchValue}
+            onChange={handleChangeSearchFilterValue}
+            onReset={handleResetSearchFilter}
           />
           <Button
             theme={isOpenFiltersContainer ? "primary" : "transparent"}
@@ -39,7 +75,7 @@ export const Filter = () => {
             Фильтры
           </Button>
           {isOpenFiltersContainer && (
-            <Button theme="transparent" onClick={resetAllFilters.onClick}>
+            <Button theme="transparent" onClick={handleResetAllFilters}>
               Сбросить фильтры
             </Button>
           )}
@@ -52,10 +88,20 @@ export const Filter = () => {
       {isOpenFiltersContainer && (
         <section className={styles.dropdown}>
           <div className={styles.dropdownItem}>
-            <FilterDate />
-            <FilterStatus />
-            <FilterSum />
-            <Button theme="transparent">Применить</Button>
+            <FilterDate
+              onChange={handleChangeFiltersValue}
+              onReset={handleResetFiltersValue}
+              value={getFiltersValue}
+            />
+            <FilterStatus state={[filtersValue, setFiltersValue]} />
+            <FilterSum
+              onChange={handleChangeFiltersValue}
+              onReset={handleResetFiltersValue}
+              value={getFiltersValue}
+            />
+            <Button theme="transparent" onClick={handleSetFiltersClick}>
+              Применить
+            </Button>
           </div>
         </section>
       )}

@@ -4,32 +4,32 @@ import { Icon } from "../../shared/Icon/Icon";
 import { TableCell } from "../../shared/TableCell/TableCell";
 
 const STATUS_MAP = {
-  Новый: {
+  new: {
     status: "Новый",
     iconName: "dot",
     iconColor: "#ff8c56",
   },
-  Рассчет: {
+  calculation: {
     status: "Рассчет",
     iconName: "dot",
     iconColor: "#459df5",
   },
-  Подтвержден: {
+  confirmed: {
     status: "Подтвержден",
     iconName: "dot",
     iconColor: "#0fb864",
   },
-  Отложен: {
+  postponed: {
     status: "Отложен",
     iconName: "dot",
     iconColor: "#ff8c56",
   },
-  Выполнен: {
+  completed: {
     status: "Выполнен",
     iconName: "checkmark",
     iconColor: "#0fb864",
   },
-  Отменен: {
+  cancelled: {
     status: "Отменен",
     iconName: "abort",
     iconColor: "#000000",
@@ -37,12 +37,12 @@ const STATUS_MAP = {
 };
 
 const StatusTypes = {
-  new: "Новый",
-  calculation: "Рассчет",
-  confirmed: "Подтвержден",
-  postponed: "Отложен",
-  completed: "Выполнен",
-  cancelled: "Отменен",
+  new: "new",
+  calculation: "calculation",
+  confirmed: "confirmed",
+  postponed: "postponed",
+  completed: "completed",
+  cancelled: "cancelled",
 };
 
 export const TableStatusCell = ({ status }) => {

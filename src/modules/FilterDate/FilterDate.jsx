@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import styles from "./FilterDate.module.css";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
 import { Input } from "../../shared/Input/Input";
 import { Button } from "../../shared/Button/Button";
-import { FilterContext } from "../../context/FilterContext/FilterContext";
 
-export const FilterDate = () => {
-  const { dateFilter } = useContext(FilterContext);
+export const FilterDate = ({ onChange, onReset, value }) => {
+  const handleOnReset = (key) => () => onReset(key);
+  const handleOnChange = (key, event) => onChange(key)(event);
 
   return (
     <div className={styles.content}>
@@ -21,11 +20,11 @@ export const FilterDate = () => {
                 nameIcon="xMedium"
                 theme="transparent"
                 className={styles.iconDelete}
-                onClick={dateFilter.onResetFromDate}
+                onClick={handleOnReset("fromDate")}
               />
             }
-            value={dateFilter.valueFromDate}
-            onChange={dateFilter.onChangeFromDate}
+            value={value("fromDate")}
+            onChange={(event) => handleOnChange("fromDate", event)}
             className={styles.datePrefix}
           />
         }
@@ -38,11 +37,11 @@ export const FilterDate = () => {
             nameIcon="xMedium"
             theme="transparent"
             className={styles.iconDelete}
-            onClick={dateFilter.onResetToDate}
+            onClick={handleOnReset("toDate")}
           />
         }
-        value={dateFilter.valueToDate}
-        onChange={dateFilter.onChangeToDate}
+        value={value("toDate")}
+        onChange={(event) => handleOnChange("toDate", event)}
       />
     </div>
   );
