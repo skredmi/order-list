@@ -51,7 +51,7 @@ export const OrderTableHeader = () => {
       <TableHeaderCell className={styles.tableHeaderCheckbox}>
         <Checkbox
           onChange={(event) => handleChangeSelectedOrders(event)}
-          checked={selectedOrders.length === orders.length}
+          checked={selectedOrders.length === orders.length && orders.length > 0}
         />
       </TableHeaderCell>
       <TableHeaderCell className={styles.tableHeaderNumberOrder}>

@@ -69,4 +69,9 @@ export const BUTTON_SIZE = {
 
 export const PAGE_SIZE = 20;
 
-export const CODE_FORM = 123;
+export const CODE_FORM = "123";
+
+export const INPUT_TYPES = {
+  primary: "primary",
+  incorrect: "incorrect",
+};

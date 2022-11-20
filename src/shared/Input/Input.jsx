@@ -1,11 +1,7 @@
 import classnames from "classnames";
 import styles from "./Input.module.css";
 import { Icon } from "../Icon/Icon";
-
-const InputTypes = {
-  primary: "primary",
-  incorrect: "incorrect",
-};
+import { INPUT_TYPES as inputTypes } from "../../constants/constants";
 
 export const Input = ({
   className,
@@ -20,7 +16,7 @@ export const Input = ({
   ...props
 }) => {
   const blockClass = classnames(styles.inputField, className, {
-    [styles.incorrect]: inputStyle === InputTypes.incorrect,
+    [styles.incorrect]: inputStyle === inputTypes.incorrect,
     [styles.inputPrefix]: prefix,
     [styles.disabled]: disabled,
   });

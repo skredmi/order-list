@@ -34,9 +34,7 @@ export const OrderTableFooter = () => {
   const selectedOrders = useSelector(getSelectedOrders);
 
   const handleRemoveSelectedOrderClick = () => {
-    for (const id of selectedOrders) {
-      dispatch(removeOrder({ id }));
-    }
+    dispatch(removeOrder({ ids: selectedOrders }));
     dispatch(resetSelectedOrders());
     setIsOpenDeleteDropdow(!isOpenDeleteDropdown);
   };
@@ -62,9 +60,9 @@ export const OrderTableFooter = () => {
   return (
     <TableFooter className={styles.tableFooter}>
       <div className={styles.tableFooterItems}>
-        <div>Выбрано записей: {selectedOrders.length}</div>
         {selectedOrders.length > 0 && (
           <>
+            <div>Выбрано записей: {selectedOrders.length}</div>
             <Button
               theme={buttonThemeTypes.primary}
               nameIcon="pencil"
@@ -119,6 +117,7 @@ export const OrderTableFooter = () => {
                     theme={buttonThemeTypes.primary}
                     size={buttonSizeTypes.small}
                     isFullWidth
+                    onClick={handlOpenDeleteDropdownClick}
                   >
                     Отмена
                   </Button>

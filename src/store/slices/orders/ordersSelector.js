@@ -100,9 +100,8 @@ const SORT_MAP = {
 
 export const getSortedOrders = (state) => {
   const filteredOrders = getFilteredOrders(state);
-  return filteredOrders.sort(
-    SORT_MAP[getSortCell(state)](getSortDirection(state) ? -1 : 1)
-  );
+  const comparator = SORT_MAP[getSortCell(state)];
+  return filteredOrders.sort(comparator(getSortDirection(state) ? -1 : 1));
 };
 
 export const getPaginetedOrders = createSelector(
@@ -115,7 +114,7 @@ export const getPaginetedOrders = createSelector(
 );
 
 export const getSelectedIdOrders = (state) => {
-  const orders = [...getOrdersData(state)];
+  const orders = getOrdersData(state);
   const selectedOrderIds = getSelectedOrders(state);
   return orders.filter((order) => selectedOrderIds.includes(order.id));
 };

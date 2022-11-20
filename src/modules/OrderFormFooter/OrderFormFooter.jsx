@@ -2,13 +2,18 @@ import styles from "./OrderFormFooter.module.css";
 import { Button } from "../../shared/Button/Button";
 import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
 
-export const OrderFormFooter = () => (
+export const OrderFormFooter = ({
+  handleSubmitForm,
+  errorMessage,
+  isActiveError,
+}) => (
   <div className={styles.footer}>
-    <div className={styles.footerError}>Ошибка или индикатор загрузки</div>
+    {isActiveError && <div className={styles.footerError}>{errorMessage}</div>}
     <Button
       theme={buttonThemeTypes.primary}
       nameIcon="checkmark"
       className={styles.footerIcon}
+      onClick={handleSubmitForm}
     >
       Сохранить
     </Button>

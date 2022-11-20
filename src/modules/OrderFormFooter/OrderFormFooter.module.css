@@ -12,6 +12,7 @@
 
 .footerError {
   color: var(--incorrect-color);
+  text-align: end;
 }
 
 .footerIcon {

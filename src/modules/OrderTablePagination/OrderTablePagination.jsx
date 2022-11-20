@@ -45,6 +45,7 @@ export const OrderTablePagination = () => {
   const handleChangeInputValueByKey = (event) => {
     if (event.key === "Enter" && inputValue > 0 && inputValue <= pageCounts)
       handleSetPageClick(inputValue);
+    setInputValue("");
   };
 
   const resultPages = (activePage, pageCount) => {
