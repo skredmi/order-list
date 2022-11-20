@@ -3,7 +3,6 @@ import { useState } from "react";
 import styles from "./OrderForm.module.css";
 import { OrderFormHeader } from "../OrderFormHeader/OrderFormHeader";
 import { resetSelectedOrders } from "../../store/slices/filters/filterSlice";
-import { getSelectedIdOrders } from "../../store/slices/orders/ordersSelector";
 import { OrderFormBody } from "../OrderFormBody/OrderFormBody";
 import { OrderFormFooter } from "../OrderFormFooter/OrderFormFooter";
 import { changeOrder } from "../../store/slices/orders/orderSlice";
@@ -13,8 +12,7 @@ import { CODE_FORM as correctCode } from "../../constants/constants";
 export const OrderForm = ({ setIsOpenForm }) => {
   const dispatch = useDispatch();
 
-  const selectedOrder = useSelector(getSelectedIdOrders)[0];
-  const selectedOrders = useSelector(getSelectedOrders);
+  const selectedOrder = useSelector(getSelectedOrders)[0];
 
   const [customerName, setCustomerName] = useState(selectedOrder.name);
   const [status, setStatus] = useState(selectedOrder.status);
@@ -73,10 +71,12 @@ export const OrderForm = ({ setIsOpenForm }) => {
 
   const handleSubmitForm = () => {
     if (isValidName && isValidCode) {
-      selectedOrders.forEach((id) => {
-        dispatch(changeOrder({ id, key: "name", value: customerName }));
-        dispatch(changeOrder({ id, key: "status", value: status }));
-      });
+      dispatch(
+        changeOrder({ id: selectedOrder.id, key: "name", value: customerName })
+      );
+      dispatch(
+        changeOrder({ id: selectedOrder.id, key: "status", value: status })
+      );
       setIsOpenForm(false);
       dispatch(resetSelectedOrders());
     } else {

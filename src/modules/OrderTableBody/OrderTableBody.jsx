@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { OrderTableRow } from "../OrderTableRow/OrderTableRow";
 import { TableBody } from "../../shared/TableBody/TableBody";
 import { OrderForm } from "../OrderForm/OrderForm";
@@ -11,14 +10,14 @@ import {
   resetSelectedOrders,
 } from "../../store/slices/filters/filterSlice";
 
-export const OrderTableBody = () => {
+export const OrderTableBody = ({ state }) => {
   const dispatch = useDispatch();
-  const [isOpenForm, setIsOpenForm] = useState(false);
 
+  const [isOpenForm, setIsOpenForm] = state;
   const orders = useSelector(getPaginetedOrders);
   const selectedOrders = useSelector(getSelectedOrders);
 
-  const handleChangeSelectedOrder = (e, id) => {
+  const handleChangeSelectedOrder = (event, id) => {
     dispatch(
       selectedOrders.includes(id) ? deselectOrder({ id }) : selectOrder({ id })
     );
@@ -38,9 +37,9 @@ export const OrderTableBody = () => {
         <OrderTableRow
           key={item.id}
           item={item}
-          onChange={(e) => handleChangeSelectedOrder(e, item.id)}
+          onChange={(event) => handleChangeSelectedOrder(event, item.id)}
           checked={selectedOrders.includes(item.id)}
-          onClick={(e) => handleOpenFormClick(e, item.id)}
+          onClick={(e) => handleOpenFormClick(e, item)}
         />
       ))}
       {isOpenForm && <OrderForm setIsOpenForm={setIsOpenForm} />}

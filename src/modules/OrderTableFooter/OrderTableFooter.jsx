@@ -17,7 +17,7 @@ import {
   BUTTON_SIZE as buttonSizeTypes,
 } from "../../constants/constants";
 
-export const OrderTableFooter = () => {
+export const OrderTableFooter = ({ isOpenForm }) => {
   const dispatch = useDispatch();
 
   const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);
@@ -60,7 +60,7 @@ export const OrderTableFooter = () => {
   return (
     <TableFooter className={styles.tableFooter}>
       <div className={styles.tableFooterItems}>
-        {selectedOrders.length > 0 && (
+        {selectedOrders.length > 0 && !isOpenForm && (
           <>
             <div>Выбрано записей: {selectedOrders.length}</div>
             <Button

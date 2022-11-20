@@ -10,7 +10,6 @@ import {
   getSortCell,
   getSortDirection,
   getPage,
-  getSelectedOrders,
 } from "../filters/filterSelector";
 import { PAGE_SIZE as pageSize } from "../../../constants/constants";
 
@@ -112,9 +111,3 @@ export const getPaginetedOrders = createSelector(
     return sortedOrders.slice(start, end);
   }
 );
-
-export const getSelectedIdOrders = (state) => {
-  const orders = getOrdersData(state);
-  const selectedOrderIds = getSelectedOrders(state);
-  return orders.filter((order) => selectedOrderIds.includes(order.id));
-};
