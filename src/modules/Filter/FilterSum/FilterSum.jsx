@@ -1,7 +1,8 @@
 import styles from "./FilterSum.module.css";
-import { Input } from "../../shared/Input/Input";
-import { Button } from "../../shared/Button/Button";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
+import { Input } from "../../../shared/Input/Input";
+import { Button } from "../../../shared/Button/Button";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { BUTTON_THEME as buttonThemeTypes } from "../../../constants/constants";
 
 export const FilterSum = ({ onChange, onReset, value }) => {
   const handleOnReset = (key) => () => onReset(key);
@@ -18,7 +19,7 @@ export const FilterSum = ({ onChange, onReset, value }) => {
             postfix={
               <Button
                 nameIcon="xMedium"
-                theme="transparent"
+                theme={buttonThemeTypes.transparent}
                 className={styles.iconDelete}
                 onClick={handleOnReset("fromSum")}
               />
@@ -34,7 +35,7 @@ export const FilterSum = ({ onChange, onReset, value }) => {
         postfix={
           <Button
             nameIcon="xMedium"
-            theme="transparent"
+            theme={buttonThemeTypes.transparent}
             className={styles.iconDelete}
             onClick={handleOnReset("toSum")}
           />

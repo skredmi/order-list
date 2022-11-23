@@ -1,7 +1,8 @@
 import styles from "./FilterDate.module.css";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { Input } from "../../shared/Input/Input";
-import { Button } from "../../shared/Button/Button";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { Input } from "../../../shared/Input/Input";
+import { Button } from "../../../shared/Button/Button";
+import { BUTTON_THEME as buttonThemeTypes } from "../../../constants/constants";
 
 export const FilterDate = ({ onChange, onReset, value }) => {
   const handleOnReset = (key) => () => onReset(key);
@@ -18,7 +19,7 @@ export const FilterDate = ({ onChange, onReset, value }) => {
             postfix={
               <Button
                 nameIcon="xMedium"
-                theme="transparent"
+                theme={buttonThemeTypes.transparent}
                 className={styles.iconDelete}
                 onClick={handleOnReset("fromDate")}
               />
@@ -35,7 +36,7 @@ export const FilterDate = ({ onChange, onReset, value }) => {
         postfix={
           <Button
             nameIcon="xMedium"
-            theme="transparent"
+            theme={buttonThemeTypes.transparent}
             className={styles.iconDelete}
             onClick={handleOnReset("toDate")}
           />

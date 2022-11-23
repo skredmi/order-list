@@ -10,6 +10,7 @@ export const initialState = {
   sortCell: "date",
   isSortAscending: true,
   page: 1,
+  selectedOrders: [],
 };
 
 export const filterSlice = createSlice({
@@ -38,6 +39,17 @@ export const filterSlice = createSlice({
     setCurrentPage(state, action) {
       state.page = action.payload;
     },
+    selectOrder(state, { payload }) {
+      state.selectedOrders.push(payload.id);
+    },
+    deselectOrder(state, { payload }) {
+      state.selectedOrders = state.selectedOrders.filter(
+        (i) => i !== payload.id
+      );
+    },
+    resetSelectedOrders(state) {
+      state.selectedOrders = [];
+    },
   },
 });
 
@@ -48,5 +60,8 @@ export const {
   setSortCell,
   setSortDirection,
   setCurrentPage,
+  selectOrder,
+  deselectOrder,
+  resetSelectedOrders,
 } = filterSlice.actions;
 export default filterSlice.reducer;

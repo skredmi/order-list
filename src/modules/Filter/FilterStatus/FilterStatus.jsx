@@ -1,22 +1,16 @@
 import { useState } from "react";
 import styles from "./FilterStatus.module.css";
-import { Input } from "../../shared/Input/Input";
-import { Button } from "../../shared/Button/Button";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { Checkbox } from "../../shared/Checkbox/Checkbox";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { LabelControl } from "../../shared/LabelControl/LabelControl";
-
-export const FILTER_STATUSES = {
-  new: "Новый",
-  calculation: "Рассчет",
-  confirmed: "Подтвержден",
-  postponed: "Отложен",
-  completed: "Выполнен",
-  cancelled: "Отменен",
-};
-
-const ANY_STATUS = "Любой";
+import { Input } from "../../../shared/Input/Input";
+import { Button } from "../../../shared/Button/Button";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { Checkbox } from "../../../shared/Checkbox/Checkbox";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { LabelControl } from "../../../shared/LabelControl/LabelControl";
+import {
+  FILTER_STATUSES as statuses,
+  ANY_STATUS as any,
+  BUTTON_THEME as buttonThemeTypes,
+} from "../../../constants/constants";
 
 export const FilterStatus = ({ state }) => {
   const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);
@@ -36,11 +30,11 @@ export const FilterStatus = ({ state }) => {
     });
   };
 
-  const statuses =
+  const inputStatusValue =
     !filters.status.length ||
-    filters.status.length === Object.keys(FILTER_STATUSES).length
-      ? ANY_STATUS
-      : filters.status.map((value) => FILTER_STATUSES[value]).join(", ");
+    filters.status.length === Object.keys(statuses).length
+      ? any
+      : filters.status.map((value) => statuses[value]).join(", ");
 
   return (
     <div className={styles.content}>
@@ -52,19 +46,19 @@ export const FilterStatus = ({ state }) => {
             postfix={
               <Button
                 nameIcon="vArrow"
-                theme="transparent"
+                theme={buttonThemeTypes.transparent}
                 onClick={handlOpenDropdownStatusClick}
                 className={styles.iconDropdown}
               />
             }
             onClick={handlOpenDropdownStatusClick}
-            value={statuses}
+            value={inputStatusValue}
           />
         }
       />
       {isOpenDropdownStatus && (
         <Dropdown className={styles.dropdown}>
-          {Object.keys(FILTER_STATUSES).map((key) => (
+          {Object.keys(statuses).map((key) => (
             <LabelControl
               key={key}
               control={
@@ -74,7 +68,7 @@ export const FilterStatus = ({ state }) => {
                   onChange={handleChangeStatusValues}
                 />
               }
-              label={FILTER_STATUSES[key]}
+              label={statuses[key]}
             />
           ))}
         </Dropdown>

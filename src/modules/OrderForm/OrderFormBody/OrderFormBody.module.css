@@ -1,0 +1,90 @@
+.formBody {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+  padding: 2rem 0.5rem 3rem 1rem;
+  gap: 2rem;
+}
+
+.formBody::-webkit-scrollbar {
+  width: 0.25rem; /* ширина scrollbar */
+}
+.formBody::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* цвет дорожки */
+  border-radius: 0.5rem;
+  margin: 0.25rem 0 0.25rem 0;
+}
+.formBody::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.34); /* цвет плашки */
+  border-radius: 0.5rem; /* закругления плашки */
+}
+
+.iconDelete {
+  fill: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+  stroke: var(--secondary-text-color-light, var(--secondary-text-color-dark));
+}
+.formTableFooter {
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--main-text-color-light, var(--main-text-color-dark));
+}
+
+.formTable {
+  height: 10rem;
+}
+
+.formHeaderАrticle {
+  width: 6rem;
+}
+
+.formHeaderName {
+  width: 14.5rem;
+}
+
+.formHeaderPrice {
+  width: 6rem;
+}
+
+.row {
+  cursor: default;
+}
+
+.rowАrticle {
+  width: 6rem;
+}
+
+.rowName {
+  width: 14.5rem;
+}
+
+.rowPrice {
+  width: 6rem;
+}
+
+.formInputStatus {
+  cursor: default;
+}
+
+.formDateInput {
+  cursor: default;
+}
+
+.formLevelInput {
+  cursor: default;
+}
+
+.formDropdownContainer {
+  position: relative;
+}
+
+.formDropdown {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  z-index: 3;
+}
+
+.formRadioDropdown {
+  display: none;
+}

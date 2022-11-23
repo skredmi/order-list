@@ -1,16 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import styles from "./OrderTablePagination.module.css";
-import { Button } from "../../shared/Button/Button";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { Input } from "../../shared/Input/Input";
-import { getPage } from "../../store/slices/filters/filterSelector";
+import { Button } from "../../../shared/Button/Button";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { Input } from "../../../shared/Input/Input";
+import { getPage } from "../../../store/slices/filters/filterSelector";
+import { getSortedOrders } from "../../../store/slices/orders/ordersSelector";
 import {
-  getSortedOrders,
+  resetSelectedOrders,
+  setCurrentPage,
+} from "../../../store/slices/filters/filterSlice";
+import {
   PAGE_SIZE as pageSize,
-} from "../../store/slices/orders/ordersSelector";
-import { setCurrentPage } from "../../store/slices/filters/filterSlice";
+  BUTTON_THEME as buttonThemeTypes,
+  BUTTON_SIZE as buttonSizeTypes,
+} from "../../../constants/constants";
 
 export const OrderTablePagination = () => {
   const [isOpenPageDropdown, setIsOpenPageDropdown] = useState(false);
@@ -19,8 +24,10 @@ export const OrderTablePagination = () => {
   };
   const dispatch = useDispatch();
   const handleSetPageClick = (page) => {
+    dispatch(resetSelectedOrders());
     dispatch(setCurrentPage(page));
   };
+
   const sortedOrders = useSelector(getSortedOrders);
   const page = useSelector(getPage);
   const result = Math.ceil(sortedOrders.length / pageSize);
@@ -88,8 +95,12 @@ export const OrderTablePagination = () => {
         <Button
           // eslint-disable-next-line react/no-array-index-key
           key={index}
-          theme={Number(item) === Number(page) ? "primary" : "transparent"}
-          size="small"
+          theme={
+            Number(item) === Number(page)
+              ? buttonThemeTypes.primary
+              : buttonThemeTypes.transparent
+          }
+          size={buttonSizeTypes.small}
           onClick={() => handleSetPageClick(item)}
           disabled={Number(item) === Number(page) || item === "..."}
         >
@@ -98,8 +109,8 @@ export const OrderTablePagination = () => {
       ))}
       {pageCounts > 1 && (
         <Button
-          theme="transparent"
-          size="small"
+          theme={buttonThemeTypes.transparent}
+          size={buttonSizeTypes.small}
           onClick={handlOpenPageDropdownClick}
         >
           #
@@ -119,7 +130,7 @@ export const OrderTablePagination = () => {
                 postfix={
                   <Button
                     nameIcon="xMedium"
-                    theme="transparent"
+                    theme={buttonThemeTypes.transparent}
                     className={styles.iconDelete}
                     onClick={handleResetInputValue}
                   />

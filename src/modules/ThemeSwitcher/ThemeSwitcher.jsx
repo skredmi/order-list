@@ -1,9 +1,14 @@
 import { useContext, useState } from "react";
-import { ThemeContext, themeTypes } from "../ThemeContext/ThemeContext";
+import { ThemeContext } from "../ThemeContext/ThemeContext";
 import styles from "./ThemeSwitcher.module.css";
 import { Button } from "../../shared/Button/Button";
 import { Dropdown } from "../../shared/Dropdown/Dropdown";
 import { LabelInput } from "../../shared/LabelInput/LabelInput";
+import {
+  THEME_TYPES as themeTypes,
+  BUTTON_THEME as buttonThemeTypes,
+  BUTTON_SIZE as buttonSizeTypes,
+} from "../../constants/constants";
 
 export const ThemeSwitcher = () => {
   const [isOpenThemeSwitcher, setIsOpenThemeSwitcher] = useState(false);
@@ -21,10 +26,10 @@ export const ThemeSwitcher = () => {
       <Button
         theme="transparent"
         className={styles.iconTransparent}
-        nameIcon={theme === "light" ? "sun" : "moon"}
+        nameIcon={theme === themeTypes.light ? "sun" : "moon"}
         onClick={handleThemeSwitcherClick}
       >
-        {theme === "light" ? "Светлая тема" : "Темная тема"}
+        {theme === themeTypes.light ? "Светлая тема" : "Темная тема"}
       </Button>
       {isOpenThemeSwitcher && (
         <Dropdown className={styles.dropdown}>
@@ -32,12 +37,16 @@ export const ThemeSwitcher = () => {
             control={
               <>
                 <Button
-                  theme={theme === "light" ? "primary" : "transparent"}
+                  theme={
+                    theme === themeTypes.light
+                      ? buttonThemeTypes.primary
+                      : buttonThemeTypes.transparent
+                  }
                   isFullWidth
-                  size="small"
+                  size={buttonSizeTypes.small}
                   nameIcon="sun"
                   className={
-                    theme === "light"
+                    theme === themeTypes.light
                       ? styles.iconPrimary
                       : styles.iconTransparent
                   }
@@ -46,12 +55,16 @@ export const ThemeSwitcher = () => {
                   Светлая
                 </Button>
                 <Button
-                  theme={theme === "dark" ? "primary" : "transparent"}
+                  theme={
+                    theme === themeTypes.dark
+                      ? buttonThemeTypes.primary
+                      : buttonThemeTypes.transparent
+                  }
                   isFullWidth
-                  size="small"
+                  size={buttonSizeTypes.small}
                   nameIcon="moon"
                   className={
-                    theme === "dark"
+                    theme === themeTypes.dark
                       ? styles.iconPrimary
                       : styles.iconTransparent
                   }

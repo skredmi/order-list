@@ -5,13 +5,9 @@ import {
   createContext,
   useMemo,
 } from "react";
+import { THEME_TYPES as themeTypes } from "../../constants/constants";
 
 export const ThemeContext = createContext();
-
-export const themeTypes = {
-  light: "light",
-  dark: "dark",
-};
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(themeTypes.light);

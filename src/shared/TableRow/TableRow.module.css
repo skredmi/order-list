@@ -8,3 +8,7 @@
   border-bottom: 0.0625rem solid
     var(--secondary-color-light, var(--secondary-color-dark));
 }
+
+.checked {
+  background: var(--secondary-color-light, var(--secondary-color-dark));
+}

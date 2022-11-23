@@ -11,8 +11,9 @@ import {
   getSortDirection,
   getPage,
 } from "../filters/filterSelector";
+import { PAGE_SIZE as pageSize } from "../../../constants/constants";
 
-export const getOrdersData = (state) => state.orders;
+export const getOrdersData = (state) => state.orders.mock;
 
 const isDateInRange = (dateFrom, dateTo) => (date) => {
   if (!dateFrom && !dateTo) {
@@ -45,7 +46,7 @@ const isItemInArray = (array) => (item) => {
   return array.includes(item);
 };
 
-const parseDate = (date) => {
+export const parseDate = (date) => {
   if (!date) return null;
   const [d, m, y] = date.slice(0, 10).split(".");
   return Date.parse(`${y}-${m}-${d}`);
@@ -98,18 +99,15 @@ const SORT_MAP = {
 
 export const getSortedOrders = (state) => {
   const filteredOrders = getFilteredOrders(state);
-  return filteredOrders.sort(
-    SORT_MAP[getSortCell(state)](getSortDirection(state) ? -1 : 1)
-  );
+  const comparator = SORT_MAP[getSortCell(state)];
+  return filteredOrders.sort(comparator(getSortDirection(state) ? -1 : 1));
 };
-
-export const PAGE_SIZE = 20;
 
 export const getPaginetedOrders = createSelector(
   [getSortedOrders, getPage],
   (sortedOrders, page) => {
-    const start = PAGE_SIZE * (page - 1);
-    const end = start + PAGE_SIZE;
+    const start = pageSize * (page - 1);
+    const end = start + pageSize;
     return sortedOrders.slice(start, end);
   }
 );

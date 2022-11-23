@@ -2,6 +2,7 @@ import classnames from "classnames";
 import styles from "./Searchbar.module.css";
 import { Icon } from "../Icon/Icon";
 import { Button } from "../Button/Button";
+import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
 
 export const Searchbar = ({
   className,
@@ -24,7 +25,7 @@ export const Searchbar = ({
     {value && (
       <Button
         nameIcon="xMedium"
-        theme="transparent"
+        theme={buttonThemeTypes.transparent}
         className={styles.iconDelete}
         onClick={onReset}
       />

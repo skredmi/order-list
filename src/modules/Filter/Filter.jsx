@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Filter.module.css";
 import { Button } from "../../shared/Button/Button";
-import { FilterSum } from "../FilterSum/FilterSum";
-import { FilterDate } from "../FilterDate/FilterDate";
-import { FilterStatus } from "../FilterStatus/FilterStatus";
+import { FilterSum } from "./FilterSum/FilterSum";
+import { FilterDate } from "./FilterDate/FilterDate";
+import { FilterStatus } from "./FilterStatus/FilterStatus";
 import { Icon } from "../../shared/Icon/Icon";
 import { Searchbar } from "../../shared/Searchbar/Searchbar";
 import {
@@ -12,8 +12,10 @@ import {
   setFilter,
   resetFilters,
   initialState,
+  resetSelectedOrders,
 } from "../../store/slices/filters/filterSlice";
 import { getSearchValue } from "../../store/slices/filters/filterSelector";
+import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
 
 export const Filter = () => {
   const [isOpenFiltersContainer, setIsOpenFiltersContainer] = useState(false);
@@ -26,6 +28,7 @@ export const Filter = () => {
   const [filtersValue, setFiltersValue] = useState({ ...initialState });
 
   const handleChangeSearchFilterValue = (event) => {
+    dispatch(resetSelectedOrders());
     dispatch(setSearchFilter(event.target.value));
   };
 
@@ -50,6 +53,7 @@ export const Filter = () => {
 
   const handleSetFiltersClick = () => {
     dispatch(setFilter(filtersValue));
+    dispatch(resetSelectedOrders());
   };
 
   return (
@@ -63,7 +67,11 @@ export const Filter = () => {
             onReset={handleResetSearchFilter}
           />
           <Button
-            theme={isOpenFiltersContainer ? "primary" : "transparent"}
+            theme={
+              isOpenFiltersContainer
+                ? buttonThemeTypes.primary
+                : buttonThemeTypes.transparent
+            }
             nameIcon="filter"
             className={
               isOpenFiltersContainer
@@ -75,7 +83,10 @@ export const Filter = () => {
             Фильтры
           </Button>
           {isOpenFiltersContainer && (
-            <Button theme="transparent" onClick={handleResetAllFilters}>
+            <Button
+              theme={buttonThemeTypes.transparent}
+              onClick={handleResetAllFilters}
+            >
               Сбросить фильтры
             </Button>
           )}
@@ -99,7 +110,10 @@ export const Filter = () => {
               onReset={handleResetFiltersValue}
               value={getFiltersValue}
             />
-            <Button theme="transparent" onClick={handleSetFiltersClick}>
+            <Button
+              theme={buttonThemeTypes.transparent}
+              onClick={handleSetFiltersClick}
+            >
               Применить
             </Button>
           </div>
