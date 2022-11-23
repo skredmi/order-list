@@ -1,6 +1,6 @@
 import styles from "./OrderFormFooter.module.css";
-import { Button } from "../../shared/Button/Button";
-import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
+import { Button } from "../../../shared/Button/Button";
+import { BUTTON_THEME as buttonThemeTypes } from "../../../constants/constants";
 
 export const OrderFormFooter = ({
   handleSubmitForm,

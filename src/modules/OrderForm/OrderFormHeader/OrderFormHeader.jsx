@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styles from "./OrderFormHeader.module.css";
-import { Button } from "../../shared/Button/Button";
+import { Button } from "../../../shared/Button/Button";
 import {
   BUTTON_THEME as buttonThemeTypes,
   BUTTON_SIZE as buttonSizeTypes,
-} from "../../constants/constants";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
+} from "../../../constants/constants";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
 
 export const OrderFormHeader = ({ onCloseForm, numberOrder, isChanged }) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);

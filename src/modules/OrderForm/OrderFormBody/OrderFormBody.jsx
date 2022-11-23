@@ -1,22 +1,22 @@
 import styles from "./OrderFormBody.module.css";
-import { Button } from "../../shared/Button/Button";
-import { Input } from "../../shared/Input/Input";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
+import { Button } from "../../../shared/Button/Button";
+import { Input } from "../../../shared/Input/Input";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
 import {
   BUTTON_THEME as buttonThemeTypes,
   FILTER_STATUSES as statuses,
   STATUS_MAP,
   INPUT_TYPES as inputTypes,
-} from "../../constants/constants";
-import { Table } from "../../shared/Table/Table";
-import { TableHeaderCell } from "../../shared/TableHeaderCell/TableHeaderCell";
-import { TableHeader } from "../../shared/TableHeader/TableHeader";
-import { TableRow } from "../../shared/TableRow/TableRow";
-import { TableCell } from "../../shared/TableCell/TableCell";
-import { TableFooter } from "../../shared/TableFooter/TableFooter";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { Radio } from "../../shared/Radio/Radio";
-import { LabelControl } from "../../shared/LabelControl/LabelControl";
+} from "../../../constants/constants";
+import { Table } from "../../../shared/Table/Table";
+import { TableHeaderCell } from "../../../shared/TableHeaderCell/TableHeaderCell";
+import { TableHeader } from "../../../shared/TableHeader/TableHeader";
+import { TableRow } from "../../../shared/TableRow/TableRow";
+import { TableCell } from "../../../shared/TableCell/TableCell";
+import { TableFooter } from "../../../shared/TableFooter/TableFooter";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { Radio } from "../../../shared/Radio/Radio";
+import { LabelControl } from "../../../shared/LabelControl/LabelControl";
 
 export const OrderFormBody = ({
   isOpenStatusDropdown,
@@ -111,24 +111,26 @@ export const OrderFormBody = ({
         />
       }
     />
-    {isOpenStatusDropdown && (
-      <Dropdown className={styles.formDropdown}>
-        {Object.keys(statuses).map((key) => (
-          <LabelControl
-            key={key}
-            control={
-              <Radio
-                className={styles.formRadioDropdown}
-                value={key}
-                onChange={() => handleChangeStatusOrder(key)}
-                checked={status === key}
-              />
-            }
-            label={statuses[key]}
-          />
-        ))}
-      </Dropdown>
-    )}
+    <div className={styles.formDropdownContainer}>
+      {isOpenStatusDropdown && (
+        <Dropdown className={styles.formDropdown}>
+          {Object.keys(statuses).map((key) => (
+            <LabelControl
+              key={key}
+              control={
+                <Radio
+                  className={styles.formRadioDropdown}
+                  value={key}
+                  onChange={() => handleChangeStatusOrder(key)}
+                  checked={status === key}
+                />
+              }
+              label={statuses[key]}
+            />
+          ))}
+        </Dropdown>
+      )}
+    </div>
     <LabelInput
       label="Код подтверждения"
       control={

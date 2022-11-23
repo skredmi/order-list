@@ -1,21 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./OrderTableFooter.module.css";
-import { TableFooter } from "../../shared/TableFooter/TableFooter";
-import { Button } from "../../shared/Button/Button";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { LabelControl } from "../../shared/LabelControl/LabelControl";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { Radio } from "../../shared/Radio/Radio";
+import { TableFooter } from "../../../shared/TableFooter/TableFooter";
+import { Button } from "../../../shared/Button/Button";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { LabelControl } from "../../../shared/LabelControl/LabelControl";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { Radio } from "../../../shared/Radio/Radio";
 import { OrderTablePagination } from "../OrderTablePagination/OrderTablePagination";
-import { getSelectedOrders } from "../../store/slices/filters/filterSelector";
-import { removeOrder, changeOrder } from "../../store/slices/orders/orderSlice";
-import { resetSelectedOrders } from "../../store/slices/filters/filterSlice";
+import { getSelectedOrders } from "../../../store/slices/filters/filterSelector";
+import {
+  removeOrder,
+  changeOrder,
+} from "../../../store/slices/orders/orderSlice";
+import { resetSelectedOrders } from "../../../store/slices/filters/filterSlice";
 import {
   FILTER_STATUSES as statuses,
   BUTTON_THEME as buttonThemeTypes,
   BUTTON_SIZE as buttonSizeTypes,
-} from "../../constants/constants";
+} from "../../../constants/constants";
 
 export const OrderTableFooter = ({ isOpenForm }) => {
   const dispatch = useDispatch();

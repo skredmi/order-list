@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./OrderTableHeader.module.css";
-import { TableHeader } from "../../shared/TableHeader/TableHeader";
-import { Checkbox } from "../../shared/Checkbox/Checkbox";
-import { TableHeaderCell } from "../../shared/TableHeaderCell/TableHeaderCell";
+import { TableHeader } from "../../../shared/TableHeader/TableHeader";
+import { Checkbox } from "../../../shared/Checkbox/Checkbox";
+import { TableHeaderCell } from "../../../shared/TableHeaderCell/TableHeaderCell";
 import {
   getSortCell,
   getSortDirection,
   getSelectedOrders,
-} from "../../store/slices/filters/filterSelector";
+} from "../../../store/slices/filters/filterSelector";
 import {
   setSortCell,
   setSortDirection,
   selectOrder,
   deselectOrder,
   resetSelectedOrders,
-} from "../../store/slices/filters/filterSlice";
-import { getPaginetedOrders } from "../../store/slices/orders/ordersSelector";
+} from "../../../store/slices/filters/filterSlice";
+import { getPaginetedOrders } from "../../../store/slices/orders/ordersSelector";
 
 export const OrderTableHeader = () => {
   const dispatch = useDispatch();

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Filter.module.css";
 import { Button } from "../../shared/Button/Button";
-import { FilterSum } from "../FilterSum/FilterSum";
-import { FilterDate } from "../FilterDate/FilterDate";
-import { FilterStatus } from "../FilterStatus/FilterStatus";
+import { FilterSum } from "./FilterSum/FilterSum";
+import { FilterDate } from "./FilterDate/FilterDate";
+import { FilterStatus } from "./FilterStatus/FilterStatus";
 import { Icon } from "../../shared/Icon/Icon";
 import { Searchbar } from "../../shared/Searchbar/Searchbar";
 import {

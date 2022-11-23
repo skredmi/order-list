@@ -1,16 +1,16 @@
 import { useState } from "react";
 import styles from "./FilterStatus.module.css";
-import { Input } from "../../shared/Input/Input";
-import { Button } from "../../shared/Button/Button";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { Checkbox } from "../../shared/Checkbox/Checkbox";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { LabelControl } from "../../shared/LabelControl/LabelControl";
+import { Input } from "../../../shared/Input/Input";
+import { Button } from "../../../shared/Button/Button";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { Checkbox } from "../../../shared/Checkbox/Checkbox";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { LabelControl } from "../../../shared/LabelControl/LabelControl";
 import {
   FILTER_STATUSES as statuses,
   ANY_STATUS as any,
   BUTTON_THEME as buttonThemeTypes,
-} from "../../constants/constants";
+} from "../../../constants/constants";
 
 export const FilterStatus = ({ state }) => {
   const [isOpenDropdownStatus, setIsOpenDropdownStatus] = useState(false);

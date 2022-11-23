@@ -1,8 +1,8 @@
 import styles from "./OrderTableRow.module.css";
-import { Checkbox } from "../../shared/Checkbox/Checkbox";
-import { TableCell } from "../../shared/TableCell/TableCell";
+import { Checkbox } from "../../../shared/Checkbox/Checkbox";
+import { TableCell } from "../../../shared/TableCell/TableCell";
 import { TableStatusCell } from "../TableStatusCell/TableStatusCell";
-import { TableRow } from "../../shared/TableRow/TableRow";
+import { TableRow } from "../../../shared/TableRow/TableRow";
 
 export const OrderTableRow = ({
   item: { date, status, count, name, numberOrder, sum, id },

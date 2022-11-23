@@ -1,11 +1,11 @@
 import classnames from "classnames";
 import styles from "./TableStatusCell.module.css";
-import { Icon } from "../../shared/Icon/Icon";
-import { TableCell } from "../../shared/TableCell/TableCell";
+import { Icon } from "../../../shared/Icon/Icon";
+import { TableCell } from "../../../shared/TableCell/TableCell";
 import {
   STATUS_MAP as statusMap,
   STATUS_TYPES as statusTypes,
-} from "../../constants/constants";
+} from "../../../constants/constants";
 
 export const TableStatusCell = ({ status }) => {
   const blockIconClass = classnames({

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./OrderForm.module.css";
-import { OrderFormHeader } from "../OrderFormHeader/OrderFormHeader";
+import { OrderFormHeader } from "./OrderFormHeader/OrderFormHeader";
 import { resetSelectedOrders } from "../../store/slices/filters/filterSlice";
-import { OrderFormBody } from "../OrderFormBody/OrderFormBody";
-import { OrderFormFooter } from "../OrderFormFooter/OrderFormFooter";
+import { OrderFormBody } from "./OrderFormBody/OrderFormBody";
+import { OrderFormFooter } from "./OrderFormFooter/OrderFormFooter";
 import { changeOrder } from "../../store/slices/orders/orderSlice";
 import { getSelectedOrders } from "../../store/slices/filters/filterSelector";
 import { CODE_FORM as correctCode } from "../../constants/constants";

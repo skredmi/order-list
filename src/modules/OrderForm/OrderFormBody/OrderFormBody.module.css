@@ -74,10 +74,14 @@
   cursor: default;
 }
 
+.formDropdownContainer {
+  position: relative;
+}
+
 .formDropdown {
   position: absolute;
-  bottom: 2.5rem;
-  right: 1rem;
+  top: -1.5rem;
+  right: 0;
   z-index: 3;
 }
 

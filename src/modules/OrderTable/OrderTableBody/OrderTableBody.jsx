@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { OrderTableRow } from "../OrderTableRow/OrderTableRow";
-import { TableBody } from "../../shared/TableBody/TableBody";
-import { OrderForm } from "../OrderForm/OrderForm";
-import { getPaginetedOrders } from "../../store/slices/orders/ordersSelector";
-import { getSelectedOrders } from "../../store/slices/filters/filterSelector";
+import { TableBody } from "../../../shared/TableBody/TableBody";
+import { OrderForm } from "../../OrderForm/OrderForm";
+import { getPaginetedOrders } from "../../../store/slices/orders/ordersSelector";
+import { getSelectedOrders } from "../../../store/slices/filters/filterSelector";
 import {
   deselectOrder,
   selectOrder,
   resetSelectedOrders,
-} from "../../store/slices/filters/filterSlice";
+} from "../../../store/slices/filters/filterSlice";
 
 export const OrderTableBody = ({ state }) => {
   const dispatch = useDispatch();

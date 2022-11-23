@@ -1,8 +1,8 @@
 import styles from "./FilterDate.module.css";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { Input } from "../../shared/Input/Input";
-import { Button } from "../../shared/Button/Button";
-import { BUTTON_THEME as buttonThemeTypes } from "../../constants/constants";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { Input } from "../../../shared/Input/Input";
+import { Button } from "../../../shared/Button/Button";
+import { BUTTON_THEME as buttonThemeTypes } from "../../../constants/constants";
 
 export const FilterDate = ({ onChange, onReset, value }) => {
   const handleOnReset = (key) => () => onReset(key);

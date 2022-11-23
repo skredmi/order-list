@@ -1,21 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import styles from "./OrderTablePagination.module.css";
-import { Button } from "../../shared/Button/Button";
-import { Dropdown } from "../../shared/Dropdown/Dropdown";
-import { LabelInput } from "../../shared/LabelInput/LabelInput";
-import { Input } from "../../shared/Input/Input";
-import { getPage } from "../../store/slices/filters/filterSelector";
-import { getSortedOrders } from "../../store/slices/orders/ordersSelector";
+import { Button } from "../../../shared/Button/Button";
+import { Dropdown } from "../../../shared/Dropdown/Dropdown";
+import { LabelInput } from "../../../shared/LabelInput/LabelInput";
+import { Input } from "../../../shared/Input/Input";
+import { getPage } from "../../../store/slices/filters/filterSelector";
+import { getSortedOrders } from "../../../store/slices/orders/ordersSelector";
 import {
   resetSelectedOrders,
   setCurrentPage,
-} from "../../store/slices/filters/filterSlice";
+} from "../../../store/slices/filters/filterSlice";
 import {
   PAGE_SIZE as pageSize,
   BUTTON_THEME as buttonThemeTypes,
   BUTTON_SIZE as buttonSizeTypes,
-} from "../../constants/constants";
+} from "../../../constants/constants";
 
 export const OrderTablePagination = () => {
   const [isOpenPageDropdown, setIsOpenPageDropdown] = useState(false);
@@ -27,6 +27,7 @@ export const OrderTablePagination = () => {
     dispatch(resetSelectedOrders());
     dispatch(setCurrentPage(page));
   };
+
   const sortedOrders = useSelector(getSortedOrders);
   const page = useSelector(getPage);
   const result = Math.ceil(sortedOrders.length / pageSize);
@@ -45,7 +46,6 @@ export const OrderTablePagination = () => {
   const handleChangeInputValueByKey = (event) => {
     if (event.key === "Enter" && inputValue > 0 && inputValue <= pageCounts)
       handleSetPageClick(inputValue);
-    setInputValue("");
   };
 
   const resultPages = (activePage, pageCount) => {
