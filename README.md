@@ -5,3 +5,4 @@ SPA-приложение "Список заказов" - таблица со с�
 
 ![admin](https://user-images.githubusercontent.com/63904240/209444763-b459601d-63f5-4233-bb98-58dbf5bd07ab.JPG)
 
+* [Ссылка на проект](https://skredmi.github.io/order-list/)
